@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+
+.wrapper{
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.login_row{
+	text-align: center;
+	margin: 10px 0 10px 0;
+}
+
+.login_row #container1{
+	width:910px;
+	margin: 0 auto 0 auto;
+}
+.login_row #login_info{
+	width:730px;
+	margin-top: 12px;
+	float:left;
+}
+
+.login_row #sociel_icons{
+	width:150px;
+	float:left;
+	margin-left:10px;
+}
+
+.socielIcons{
+	height:30px;
+	width:30px;
+	margin-top: 7px;
+	padding: 0 7px 0 7px;
+	
+}
+
+button{
+	background:none;
+}
+
+.copyright{
+	clear:both;
+	
+}
+
+#login_form{
+	float:left;
+}
+
+.hint_info_loginpage{
+display:none;
+clear: both;
+margin-left: 500px;
+width: 219px;
+height: 27px;
+background: rgb(195, 228, 196);
+}
+
