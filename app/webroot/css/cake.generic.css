@@ -78,7 +78,8 @@ p {
 }
 
 #header{
-	padding: 10px 20px;
+	padding: 6px 10px;
+height: 20px;
 }
 #header h1 {
 	line-height:20px;
@@ -101,15 +102,16 @@ p {
 	background: #fff;
 	clear: both;
 	color: #333;
-	padding: 10px 20px 40px 20px;
+	//padding: 10px 20px 40px 20px;
 	overflow: auto;
-	min-height:600px;
+	min-height:900px;
 }
 #footer {
 	clear: both;
 	padding: 6px 10px;
 	text-align: right;
 	height:20px;
+	
 }
 #header a, #footer a {
 	color: #fff;

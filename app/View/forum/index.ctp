@@ -4,17 +4,27 @@
 	
 	$this->start( 'main' );
 ?>
-<div class="wrapper">
+<div class="wrapper_2">
+	<div class="inner_wrapper" >
+		<div class="high_light_area">
+		High light area
+		</div>
+		
+		<div class="category">
+			<div class="cate_colunm_2">
+				<div class='cate_game_coc'>
+				<img class="cate_entry" src="zzz/picture/coc/cate_button.jpg" style="width:100%;" />
+				</div>
+				<div class='cate_game_coc'>
+				<img class="cate_entry" src="zzz/picture/dota2/cate_button.jpg" style="width:100%;" />
+				</div>
+			</div>
+		</div>
+		
+	</div>
 
 
-content
-
-
-
-
-
-
-
+	
 </div>
 
 <?php

@@ -5,6 +5,22 @@
 	width: 1200px;
 	margin-left: auto;
 	margin-right: auto;
+	background:black;
+}
+
+.wrapper_2{
+	width:90%;
+	float:left;
+	min-height:868px;
+	background: rgb(158, 216, 224);
+}
+
+.sidebar{
+
+width:10%;
+float:left;
+min-height:868px;
+background: rgb(232, 235, 234);
 }
 
 .login_row{
@@ -58,3 +74,58 @@ height: 27px;
 background: rgb(195, 228, 196);
 }
 
+.central_window{
+	width: 400px;
+	position: absolute;
+	margin-left: -200px;
+	margin-top: -80px;
+	top: 50%;
+	left: 50%;
+	display: block;
+	z-index: 2000;
+	//border: 1px solid #006699;
+}
+
+.user_info{
+	background: rgb(232, 235, 234);
+padding: 5px;
+height: 20px;
+border: 1px solid rgb(189, 178, 178);
+}
+
+.user_logout_button{
+	float:right;
+}
+
+.high_light_area{
+	min-height:250px;
+	border:solid 1px;
+}
+
+.inner_wrapper{
+	padding:5px;
+}
+
+.category{
+	min-height:600px;
+	border:solid 1px;
+}
+
+.cate_game_coc{
+	padding:10px;
+	float:left;
+	width:48%;
+	height:auto;
+	//background-image: url('picture/coc/cate_button.jpg');
+	//background-repeat: no-repeat;
+}
+
+.cate_colunm_2{
+	padding:5px;
+	clear:both;
+	
+}
+
+.cate_entry:hover{
+	cursor: pointer;
+}
