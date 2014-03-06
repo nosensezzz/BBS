@@ -28,7 +28,7 @@
 		
 		<div class='user_info'>
 		
-			<image src="zzz/avatar/1.jpg" alt="picture" style="height:20px;width:20px;float:left" /> 
+			<image src="/bbs_example/zzz/avatar/1.jpg" alt="picture" style="height:20px;width:20px;float:left" /> 
 			<span style="float:left;margin-left:6px;"><?= $user['User']['username'] ?></span>
 			
 			<span style="float:left;margin-left:10%;">Other function in develop</span>
@@ -61,7 +61,10 @@
 	
 <div class="sidebar">	
 	<div style="padding:5px;">
-		this is sidebar
+			<div class="sidebar_logo">
+			<img src="/" alt="logo"/ onclick="back_to_main()">
+			
+			</div>
 	</div>
 	
 	
@@ -81,3 +84,9 @@
 	// main is the page content...
 	echo $this->fetch('main');
 ?> 
+
+<script>
+function back_to_main(){
+	window.location.href="/bbs_example/forum";
+}
+</script>

@@ -33,6 +33,8 @@ class ForumController extends AppController {
 	/*	2 Log out button
 	/* 
 	/**/
+	
+	
 	}
 
 

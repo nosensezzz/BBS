@@ -12,10 +12,10 @@
 		
 		<div class="category">
 			<div class="cate_colunm_2">
-				<div class='cate_game_coc'>
+				<div class='cate_game_coc' onclick="entry_coc()" >
 				<img class="cate_entry" src="zzz/picture/coc/cate_button.jpg" style="width:100%;" />
 				</div>
-				<div class='cate_game_coc'>
+				<div class='cate_game_coc' onclick="entry_dota2()">
 				<img class="cate_entry" src="zzz/picture/dota2/cate_button.jpg" style="width:100%;" />
 				</div>
 			</div>
@@ -27,6 +27,21 @@
 	
 </div>
 
+
+
+<script>
+function entry_coc(){
+	window.location.href="games/coc";
+}
+
+function entry_dota2(){
+	window.location.href="games/dota2";
+}
+
+
+</script>
+
 <?php
 	$this->end();
 ?>
+

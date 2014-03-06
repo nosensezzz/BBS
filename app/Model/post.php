@@ -2,7 +2,9 @@
 
 class Post extends AppModel {
      public $name = 'Post';
+	 public $useTable = 'post';
 	 
+	 /*
 	 public $belongsTo = array(
 		'User' => array(
 			'className' => 'User',
@@ -18,6 +20,8 @@ class Post extends AppModel {
 			'dependent' => true,
 		)
 	 );
+	 
+	 */
 	 
 	 
 }

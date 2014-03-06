@@ -97,6 +97,11 @@ Configure::write('Dispatcher.filters', array(
  * Configures default file logging options
  */
 App::uses('CakeLog', 'Log');
+App::uses('zzz_functions' , 'zzz');
+App::uses('Folder', 'Utility');
+date_default_timezone_set("US/Eastern");
+
+
 CakeLog::config('debug', array(
 	'engine' => 'File',
 	'types' => array('notice', 'info', 'debug'),

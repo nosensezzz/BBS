@@ -6,9 +6,15 @@ class IndexController extends AppController {
 	
 	public function index(){
 		
-		 $this->pageTitle = 'Title of your page.'; 
-		 $this->set('view', 'none');
-		
+		// $this->pageTitle = 'Title of your page.'; 
+		// $this->set('view', 'none'); 
+		//$this->loadModel( 'User' );
+			
+		$id = $this->Session->read('id');	
+		if( $id ){	
+			$this->redirect( array( 'controller'=>'forum' , 'action'=>'index' ) );
+			}
+			
 	}
 }
 

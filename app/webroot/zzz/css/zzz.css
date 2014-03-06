@@ -5,7 +5,6 @@
 	width: 1200px;
 	margin-left: auto;
 	margin-right: auto;
-	background:black;
 }
 
 .wrapper_2{
@@ -25,7 +24,9 @@ background: rgb(232, 235, 234);
 
 .login_row{
 	text-align: center;
-	margin: 10px 0 10px 0;
+	margin: 0px 0 10px 0;
+	height: 41px;
+background: rgb(246, 242, 242);
 }
 
 .login_row #container1{
@@ -39,7 +40,7 @@ background: rgb(232, 235, 234);
 }
 
 .login_row #sociel_icons{
-	width:150px;
+	width:16%;
 	float:left;
 	margin-left:10px;
 }
@@ -95,6 +96,10 @@ border: 1px solid rgb(189, 178, 178);
 
 .user_logout_button{
 	float:right;
+}
+
+.sidebar_logo:hover{
+cursor: pointer;
 }
 
 .high_light_area{

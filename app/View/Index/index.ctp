@@ -22,8 +22,8 @@ $site_url = 'bbs_example';
 		<div id="container1">
 		<div id="login_info">
 
-		<span><label>Username : </label><input type="text"  style="width: 17%;" id="username" name="username" /></span>
-		<span><label>Password : </label><input type="password" style="width: 17%;" id="password" name="password" /></span>
+		<span><label>Username : </label><input type="text"  style="width: 15%;" id="username" name="username" /></span>
+		<span><label>Password : </label><input type="password" style="width: 15%;" id="password" name="password" /></span>
 		<button style="width: 12%;margin-left: 1%;height: 18px;" onclick="login()" >Login</button>
 
 		<button onclick="noname_button()" style="width: 12%;margin-left: 1%;height: 18px;" disabled >Anonymity</button>
