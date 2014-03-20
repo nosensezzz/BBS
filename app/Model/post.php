@@ -4,24 +4,29 @@ class Post extends AppModel {
      public $name = 'Post';
 	 public $useTable = 'post';
 	 
-	 /*
+	 
 	 public $belongsTo = array(
 		'User' => array(
 			'className' => 'User',
-			'foreignKey' => 'by_user'
+			'foreignKey' => 'poster_id'
 		
+		),
+		'Post_category' => array(
+			'className' => 'Post_category',
+			'foreignKey' => 'category'
 		)
 	 );
 	 
-	 public $hasMany = array(
-		'Postcontent' => array(
-			'className' => 'Postcontent',
-			'foreignkey' => 'post_id',
+	
+	public $hasMany = array(
+		'Post_reply' => array(
+			'className' => 'Post_reply',
+			'foreignKey' => 'post_id',
+			
 			'dependent' => true,
-		)
+		),
 	 );
-	 
-	 */
+
 	 
 	 
 }

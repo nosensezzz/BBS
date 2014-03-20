@@ -66,7 +66,7 @@ $site_url = __d( 'SITE', 'bbs_example' );
 		</div>
 		<div id="content">
 
-			<?php echo $this->Session->flash(); ?>
+			<?php //echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
 		</div>

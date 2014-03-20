@@ -4,7 +4,9 @@
 
 <!--  用户简要信息 与 用户相关操作 -->
 <?php
-
+		$id = $this->Session->read('id');
+		$user = $this->Session->read('user');
+	
 		if( !$id ){
 		?>
 			<div class="central_window">

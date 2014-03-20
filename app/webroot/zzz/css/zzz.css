@@ -10,7 +10,7 @@
 .wrapper_2{
 	width:90%;
 	float:left;
-	min-height:868px;
+	min-height:1200px;
 	background: rgb(158, 216, 224);
 }
 
@@ -18,8 +18,6 @@
 
 width:10%;
 float:left;
-min-height:868px;
-background: rgb(232, 235, 234);
 }
 
 .login_row{
@@ -70,7 +68,7 @@ button{
 display:none;
 clear: both;
 margin-left: 500px;
-width: 219px;
+width: 20%;
 height: 27px;
 background: rgb(195, 228, 196);
 }
@@ -109,6 +107,7 @@ cursor: pointer;
 
 .inner_wrapper{
 	padding:5px;
+	margin: 10px;
 }
 
 .category{
@@ -133,4 +132,144 @@ cursor: pointer;
 
 .cate_entry:hover{
 	cursor: pointer;
+}
+
+.coc_post_style{
+	border: 1px solid black;
+	clear:both;
+	height:400px;
+	overflow-y:scroll;
+}
+
+.new_post{
+	border: 1px solid black;
+	clear:both;
+}
+
+.all_post{
+	//border: 1px solid black;
+}
+.post_picture{
+	padding: 10px;
+	width:29%;
+	float:right;
+}
+
+.post_content{
+	padding: 10px;
+	width:68%;
+	float:left;
+}
+
+.post_footer{
+	clear:both;
+	padding: 10px;
+	margin-top:350px;
+}
+.post_table {
+	border: 1px solid black;
+	margin-top:10px;
+}
+.post_table tr#th{
+	background:rgb(232, 235, 234);
+}
+.post_table th#th_id{
+	width:4%;
+	
+}
+.post_table td#tr_id{
+	background:rgb(232, 235, 234);
+}
+
+.post_table tr#post{
+	cursor: pointer;
+}
+
+.post_table tr#post:hover{
+	background:rgb(212, 212, 212);
+}
+.table_header{
+	//border: 1px solid black;
+	height:100px;
+}
+
+.inner_post_category{
+	background:rgb(232, 235, 234);
+	padding:10px;
+	margin-top:10px;
+	border:solid 1px;
+}
+
+.post_control_panel{
+	background:rgb(232, 235, 234);
+	padding:10px;
+	margin-top:10px;
+	border:solid 1px;
+}
+
+.control_panel_button{
+	margin:5px 10px;
+}
+.post_header_table{
+	padding:0px;
+}
+
+.post_header_table th{
+	padding:1px; 
+	border:0px;
+	width: 6%;
+}
+
+.inner_post_content{
+	background:rgb(232, 235, 234);
+	padding:10px;
+	margin-top:10px;
+	min-height:200px;
+	border:solid 1px;
+}
+
+.post_text_area{
+	padding:5px;
+	min-height:100px;
+}
+
+.post_picture_area #post_picture{
+	max-width: 50%;
+}
+
+div > #reply_div{
+	display: none; 
+	position: fixed; 
+	top: 10%; 
+	left: 28%; 
+	width: 45%; 
+	height: 55%; 
+	background-color: rgb(229, 229, 229); 
+	z-index:1001; 
+	-moz-opacity: 0.9; 
+	opacity:.80; 
+	filter: alpha(opacity=88); 
+	
+}
+
+div > #reply_div  > .reply_div_form{
+	margin:2%;
+	background:black;
+	height:80%;
+}
+
+div > #reply_div > .reply_div_footer{
+	clear:both;
+	margin:2%;
+	height: 10;
+}
+
+.post_footer_div{
+	height:10px;
+	padding:7px;
+}
+.post_footer_div_userinfo{ float:left; } .post_footer_div_buttons{ float:right; }
+
+.p-reply_title{
+	font-weight:bold;
 }

@@ -33,18 +33,21 @@ class User extends AppModel {
 		),
 		
 	 );
-	 /*
+	 */
+	 
 	 public $hasMany = array(
 		'Post' => array(
 			'className' => 'Post',
-			'foreignKey' => 'by_user', 
+			'foreignKey' => 'poster_id', 
 		),
+		/*
 		'Postcontent' => array(
 			'className' => 'Postcontent',
 			'foreignKey' => 'by_user',
 		),
+		*/
 	 );
-	 */
+	 
 	 
 }
 

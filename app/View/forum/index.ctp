@@ -31,11 +31,11 @@
 
 <script>
 function entry_coc(){
-	window.location.href="games/coc";
+	window.location.href="games/coc?category=1";
 }
 
 function entry_dota2(){
-	window.location.href="games/dota2";
+	window.location.href="games/coc?category=2";
 }
 
 
