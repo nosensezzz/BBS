@@ -39,7 +39,7 @@
 				<th>Title : </th><td> <?= $post['Post']['title'] ?></td>
 			</tr>
 			<tr>
-				<th>Time : </th><td><?php echo date('Y-m-d H:i:s', $post['Post']['created_time']);  ?></td>
+				<th>Posted : </th><td><?php echo date('Y-m-d H:i:s', $post['Post']['created_time']);  ?></td>
 			</tr>
 			
 		</table>
@@ -88,7 +88,7 @@
 				<td><?= $reply['username'] ?></td>
 			</tr>
 			<tr>
-				<th>Time : </th><td><?php echo date('Y-m-d H:i:s', $reply['created_time']);  ?></td>
+				<th>Posted : </th><td><?php echo date('Y-m-d H:i:s', $reply['created_time']);  ?></td>
 			</tr>
 			
 		</table>

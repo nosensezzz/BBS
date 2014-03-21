@@ -23,7 +23,7 @@
 			<tr>
 		
 		<?php
-			foreach( $posts as $post){
+			foreach( $list_posts as $post){
 				//die ( var_dump($post) );
 			?>
 				<!--div class="coc_post_style">
@@ -50,6 +50,26 @@
 			}
 		?>
 		</table>
+		
+		<!--  pagination  -->
+		<div>
+		<a href="?category=<?=$category?>&page=1"><<</a>
+		
+			<?php
+			//echo $total_posts;
+			$page = 1;
+			while( $total_posts > 0 ){
+				$total_posts -= 10;
+				?>
+				<a href="?category=<?=$category?>&page=<?= $page?>"><?=$page++?></a>
+				
+				<?php
+				
+			}
+			$page--;
+			?>
+		<a href="?category=<?=$category?>&page=<?=$page?>">>></a>
+		</div>
 		
 		
 		<div class='new_post' id="coc_new_post">

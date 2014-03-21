@@ -7,7 +7,40 @@
 <div class="wrapper_2">
 	<div class="inner_wrapper" >
 		<div class="high_light_area">
-		High light area
+			<div class="high_light_area_header">
+				<div id="notice_header" ><div id="notice_header_content">Notice</div></div>
+				<div id="recentpost_header" ><div id="recentpost_header_content">Most Recent Topic</div></div>
+				<div id="recentreply_header" ><div id="recentreply_header_content">111</div></div>
+			</div>
+			<div class="high_light_area_content">
+				<div class="high_light_area_notice" >
+					<div id="content_div">
+						11111111
+					</div>
+				</div>
+				
+				<div class="high_light_area_recentpost" >
+					<div id="content_div">
+						<?php
+							foreach( $recent_posts as $post ){
+								//var_dump( $post);
+								?>
+								<p><a class="high_light_a" href="/bbs_example/games/post?id=<?= $post['Post']['id'] ?>">
+								[<?= $post['Post_category']['short'] ?>]<?= $post['Post']['title'] ?> (<?php echo count($post['Post_reply']);?>)
+								</a></p>
+								<?php
+								
+							}
+						?>
+					</div>
+				</div>
+				
+				<div class="high_light_area_recentreply" >
+					<div id="content_div">
+						11111111
+					</div>
+				</div>
+			</div>
 		</div>
 		
 		<div class="category">

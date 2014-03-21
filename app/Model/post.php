@@ -14,11 +14,16 @@ class Post extends AppModel {
 		'Post_category' => array(
 			'className' => 'Post_category',
 			'foreignKey' => 'category'
-		)
+		),
+		
+	 );
+	 
+	 public $hasOne = array(
+		
 	 );
 	 
 	
-	public $hasMany = array(
+	 public $hasMany = array(
 		'Post_reply' => array(
 			'className' => 'Post_reply',
 			'foreignKey' => 'post_id',

@@ -14,20 +14,40 @@ class GamesController extends AppController {
 	
 		if( empty($_GET['category']) ){
 			echo 'error';
-				
 				die();
+		} else if( empty($_GET['page'])){
+			$page=1;
+		}else{
+			$page=$_GET['page'];
 		}
+		
+		
 	
 		$this->Session->write('category' ,  $_GET['category'] );
 		
 		$this->loadModel( 'Post' );
 			$posts = $this->Post->find('all' , array(
 				'conditions' => array(
-					'Post.category' => $this->Session->read('category')
+					'Post.category' => $this->Session->read('category'),
 				)
 			));	
-			//die(var_dump( $posts ));
+			
+			$this->loadModel( 'Post' );
+			$list_posts = $this->Post->find('all' , array(
+				'conditions' => array(
+					'Post.category' => $this->Session->read('category'),
+				),
+				'limit' => 10,
+				'page' => $page,
+				'order' => array( 'Post.created_time DESC' ),
+			));	
+			//die(var_dump( $list_posts ));
+			$total_posts = count( $posts );
+			
+			
 			$this->set ('posts' , $posts);
+			$this->set ('list_posts' , $list_posts);
+			$this->set ('total_posts' , $total_posts);
 		
 	
 	}

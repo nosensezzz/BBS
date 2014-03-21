@@ -6,16 +6,6 @@ class Post_category extends AppModel {
 	 
 	 
 
-	 /*
-	 public $hasMany = array(
-		'Postcontent' => array(
-			'className' => 'Postcontent',
-			'foreignkey' => 'post_id',
-			'dependent' => true,
-		)
-	 );
-	 
-	 */
 	 
 	 
 }

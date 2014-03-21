@@ -10,6 +10,13 @@
 		if( !$id ){
 		?>
 			<div class="central_window">
+				<script>
+					// 没注册用户的处理
+					$( function(){
+						setInterval( 'back_to_index()' ,3000); 
+					});
+				
+				</script>
 				<?php
 				
 				echo $this->Html->link('You need to register first. Click here to go back' , '/' );
@@ -90,5 +97,8 @@
 <script>
 function back_to_main(){
 	window.location.href="/bbs_example/forum";
+}
+function back_to_index(){
+	window.location.href="/bbs_example";
 }
 </script>
