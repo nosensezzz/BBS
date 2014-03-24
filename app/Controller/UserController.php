@@ -4,7 +4,7 @@ class UserController extends AppController {
 
 	//public $name = 'User' ;
 	public $helpers = array ( 'Html' , 'Form');
-	public $components = array('DebugKit.Toolbar');
+	//public $components = array('DebugKit.Toolbar' => array('panels' => array()));
 	
 	
 	
@@ -72,7 +72,7 @@ class UserController extends AppController {
 		//var_dump( $_POST );
 		
 		
-		$password = Security::hash( $_POST['password'] );
+		$password = OnlyHash::hash( $_POST['password'] );
 		$find = $this->User->find( 'first' , array(
 				'conditions' => array(
 					'username' => $_POST['username'],
@@ -142,6 +142,47 @@ class UserController extends AppController {
 	
 
 	
+	}
+	
+	public function usernameCheck(){
+		//var_dump ($_GET);
+		$checkValue = $_GET['fieldValue'];
+		$callback[0] = $_GET['fieldId'];
+		$this->loadModel( 'User' );
+		$user = $this->User->find('first' , array(
+			'conditions' => array(
+				'username' => $checkValue,
+			)
+		));
+		if( count($user) > 0 ){
+			$callback[1] = false;
+			echo json_encode( $callback );
+		} else {
+			$callback[1] = true;
+			echo json_encode( $callback );
+		}
+		die();
+	}
+	
+	public function emailCheck(){
+		$checkValue = $_GET['fieldValue'];
+		$callback[0] = $_GET['fieldId'];
+		$this->loadModel( 'User' );
+		$user = $this->User->find('first' , array(
+			'conditions' => array(
+				'Email' => $checkValue,
+			)
+		));
+		if( count($user) > 0 ){
+			$callback[1] = false;
+			echo json_encode( $callback );
+		} else {
+			$callback[1] = true;
+			echo json_encode( $callback );
+		}
+	
+	
+	die();
 	}
 	
 	

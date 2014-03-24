@@ -10,7 +10,7 @@
 			<div class="high_light_area_header">
 				<div id="notice_header" ><div id="notice_header_content">Notice</div></div>
 				<div id="recentpost_header" ><div id="recentpost_header_content">Most Recent Topic</div></div>
-				<div id="recentreply_header" ><div id="recentreply_header_content">111</div></div>
+				<div id="recentreply_header" ><div id="recentreply_header_content">Hot Category</div></div>
 			</div>
 			<div class="high_light_area_content">
 				<div class="high_light_area_notice" >
@@ -37,11 +37,34 @@
 				
 				<div class="high_light_area_recentreply" >
 					<div id="content_div">
-						11111111
+						<?php
+							foreach( $category as $cate ){
+								$cate_count = 0;
+								//var_dump( $cate);
+								?>
+								<p><a class="high_light_a" href="">
+								[<?= $cate['Post_category']['category'] ?>]
+								<?php
+									//var_dump( $cate );
+									foreach( $cate['Post'] as $cate_post ){
+										//echo $cate_post['created_time'];
+										$today = strtotime(date('Y-m-d',time())) - 86400;
+										//echo $today;
+										if( $cate_post['created_time'] > $today ){ $cate_count++; }
+									} 
+									echo '(' . $cate_count . ')';
+								?>
+								</a></p>
+								<?php
+								
+							}
+						?>
 					</div>
 				</div>
 			</div>
 		</div>
+		
+		<hr/>
 		
 		<div class="category">
 			<div class="cate_colunm_2">

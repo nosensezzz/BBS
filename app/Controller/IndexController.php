@@ -2,7 +2,7 @@
 
 class IndexController extends AppController {
 
-	public $components = array('DebugKit.Toolbar');
+	//public $components = array('DebugKit.Toolbar');
 	
 	public function index(){
 		

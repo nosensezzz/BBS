@@ -52,7 +52,8 @@
 		</table>
 		
 		<!--  pagination  -->
-		<div>
+	<div class="pagination_newpost">
+		<div class="pagination">
 		<a href="?category=<?=$category?>&page=1"><<</a>
 		
 			<?php
@@ -70,20 +71,47 @@
 			?>
 		<a href="?category=<?=$category?>&page=<?=$page?>">>></a>
 		</div>
+		<div class="newpost" >
+		<button onclick="newpostshow()" class="cakeButton">New Post</button>
+		</div>
+	</div>
 		
+		<!-- new form div -->
 		
-		<div class='new_post' id="coc_new_post">
-		<form action="/bbs_example/games/coc_new_post" id="postCocForm" enctype="multipart/form-data" method="post"  accept-charset="utf-8">
-			<label for="title">title</label><input name="data[Post][title]" id="title" maxlength="100" type="text">	
-			<label for="text">text</label><textarea name="data[Post][text]" id="text" cols="30" rows="6"></textarea>
-			<input name="data[pic]" id="picture" type="file" />
+		<div class="new_post_div" hidden>
+			<form action="/bbs_example/games/coc_new_post" id="postForm" enctype="multipart/form-data" method="post"  accept-charset="utf-8" class="form_1">
+				<table cellspacing=2 cellpadding=0 width=300 border=0>
+				<tr>
+				<td><font class="en1">Subject:</font> </td>
+				<td><input size=100 id="post_subject" name="data[Post][title]"  class="input1" onblur="this.className='input1 validate[required] minSize[5]'" onfocus="this.className='input1-bor validate[required] minSize[5]'">
+		
+				
+				</td>
+				</tr>
+				<tr>
+				<td><font class="en1">Content: </font> </td>
+				<td><textarea name="data[Post][text]" id="text" rows=10 cols=120 class="input1" onblur="this.className='input1 validate[required] minSize[10]'" onfocus="this.className='input1-bor validate[required] minSize[10]'"></textarea>
+				</td>
+				</tr>
+				<tr>
+				<td><font class="en1">Pic: </font> </td>
+				<td><input name="data[pic]" id="picture" type="file" />
+				</td>
+				</tr>
 			
+				<tr>
+				<td><font class="en1"></font> </td>
+				<td><a class="cakeButton" onclick="javascript:cancelReply()">Cancel</a>  <input type="submit" value="submit" id="submit" class="cakeButton">
+				</td>
+				</tr>
+				
+				
+				<input name="data[Post][category]" id="" hidden value="<?= $category ?>" />	
+				<input name="data[Post][poster_id]" id="" hidden value="<?= $poster ?>" />	
+				</table>
+					
+			</form>
 			
-			<input name="data[Post][category]" id="" hidden value="<?= $category ?>" />	
-			<input name="data[Post][poster_id]" id="" hidden value="<?= $poster ?>" />	
-			<input type="submit" value="submit" id="submit">
-
-		</form>
 		</div>
 
 </div>
@@ -91,12 +119,40 @@
 
 <script>
 function select_this_post( id ){
-	//alert( id );
-	<?php
-		//$function = new zzz_function;
-	?>
+
 	window.location.href="post?id=" + id;
 }
+
+function newpostshow(){
+	$(".new_post_div").show();
+	$("#post_subject").focus();
+}
+
+function cancelReply(){
+	$(".new_post_div").hide();
+}
+</script>
+<script>
+// Call ValidationEngine here
+		jQuery(document).ready(function(){
+			// binds form submission and fields to the validation engine
+			jQuery("#postForm").validationEngine();
+		});
+		/**
+		*
+		* @param {jqObject} the field where the validation applies
+		* @param {Array[String]} validation rules for this field
+		* @param {int} rule index
+		* @param {Map} form options
+		* @return an error string if validation failed
+		*/
+		function checkHELLO(field, rules, i, options){
+			if (field.val() != "HELLO") {
+				// this allows to use i18 for the error msgs
+				return options.allrules.validate2fields.alertText;
+			}
+		}
+	
 </script>
 
 

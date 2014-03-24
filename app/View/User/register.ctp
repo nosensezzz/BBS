@@ -8,180 +8,91 @@ $site_url = "bbs_example";
 User Register
 
 
-
-<?php 
-	echo $this->Form->create("User", array(
-		'inputDefaults' => array(
-			'div' => false
-		)	
-	));
 	
-	?>
-	<div>
+	<form action="/bbs_example/user/register" id="UserRegisterForm" method="post" accept-charset="utf-8">
+	<table cellspacing=2 cellpadding=0 width=300 border=0>
+				<tr>
+				<td><font class="en1">Username:</font> </td>
+				<td><input size=60 <input name="data[User][username]" id="username"  
+				class="input1"
+				onblur="this.className='input1 validate[required] minSize[4] ajax[ajaxNameCallPhp]'" 
+				onfocus="this.className='input1-borvalidate[required] '">
+				</td>
+				</tr>
+				<tr>
+				<td><font class="en1">Email:</font> </td>
+				<td><input size=60 <input name="data[User][Email]" id="email"  class="input1 validate[required,custom[email]]" 
+				onblur="this.className='input1 validate[required,custom[email],ajax[ajaxEmailCall]]'" onfocus="this.className='input1-bor validate[required,custom[email]]'">
+				</td>
+				</tr>
+				<tr>
+				<td><font class="en1">Password:</font> </td>
+				<td><input size=60 <input name="data[User][password]" id="password" type="password" class="input1 validate[required, minSize[6]]" onblur="this.className='input1 validate[required, minSize[6]]'" onfocus="this.className='input1-bor validate[required, minSize[6]]'">
+				</td>
+				</tr>
+				<tr>
+				<td><font class="en1">Retype Pwd:</font> </td>
+				<td><input size=60 <input  id="retype"  class="input1 validate[equals[password]]" type="password" onblur="this.className='input1 validate[equals[password]]'" onfocus="this.className='input1-bor validate[equals[password]]'">
+				</td>
+				</tr>
+				<tr>
+				<td><font class="en1">First Name:</font> </td>
+				<td><input size=60 <input name="data[User][first_name]" id="first_name"  class="input1 validate[required]" onblur="this.className='input1 validate[required]'" onfocus="this.className='input1-bor validate[required]'">
+				</td>
+				</tr>
+				<tr>
+				<td><font class="en1">Last Name:</font> </td>
+				<td><input size=60 <input name="data[User][last_name]" id="last_name"  class="input1 validate[required]" onblur="this.className='input1validate[required]'" onfocus="this.className='input1-bor validate[required]'">
+				</td>
+				</tr>
+			
+				<tr>
+				<td><font class="en1"></font> </td>
+				<td>  <a class="cakeButton" id="reply_cancel_button" onclick="javascript:goback()">Cancel</a> <input type="submit" value="submit" id="submit" class="cakeButton">
+				</td>
+				</tr>
+				<input name="info" value="9" hidden	>
+					
+				</table>
+	</form>
 	
-	<?=
-	$this->Form->input( 'username' , array(
-		'label' => 'Username',
-		'id' => "username"
-	));
-	?>
-	<p id="username_hint" style="display:none;" ></p>
-	
-	<?=
-	$this->Form->input( 'Email' , array(
-		'label' => 'Email',
-		'type' => 'email'
-	));
-	?>
-	</div>
-	
-	<div>
-	<?=
-	$this->Form->input( 'password' , array(
-		'label' => 'Password',
-		'id' => 'mainpassword'
-	));
-	?>
-	
-	
-	<label for="retype">Re-type</label><input id="retype" type="password"  />
-	<p id="password_hint" style="display:none;" ></p>
-	</div>
-	
-	<div>
-
-	<?=
-	$this->Form->input( 'first_name' , array(
-		'label' => 'Your First Name'
-	));
-	?>
-	
-	
-	<?=
-	$this->Form->input( 'last_name' , array(
-		'label' => 'Your Last name'
-	));
-	?>
-	</div>
-	<input id='info' name='info' hidden />
-	<div ><input type="submit" value="submit" id="submit" /></div>
-
 	
 </div>
 
 
 
-
-
-
-
-
-
-
 <script>
-// Check password match
-$("#retype").blur( function(){
-	
-	val1 = $("#retype").val();
-	val2 = $("#mainpassword").val();
-	if ( val2.length < 4 ) {
-		$("#password_hint").html( "Your password is not long enough." );
-		$("#password_hint").show();
-		$( "#info" ).val('1');
-	
-	} else if ( val1 != val2 ){
-		$("#password_hint").html( "Your password is not match." );
-		$("#password_hint").show();
-		$( "#info" ).val('1');
-	} else {
-		$("#password_hint").html( "" );
-		$("#password_hint").hide();
-		$( "#info" ).val('9');
-	}
-	
-	
-	
-});
-
-
-
-
-// Check password length
-$("#mainpassword").blur ( function(){
-	check = false;
-	val1 = $("#retype").val();
-	val2 = $("#mainpassword").val();
-	if ( val2.length < 4 ) {
-		$("#password_hint").html( "Your password is not long enough." );
-		$("#password_hint").show();
-		//check = true;
-		//$( "#reg_submit" ).hide();
-		$( "#info" ).val('1');
-		//alert(  $( "#info" ).val());
-	} else if ( val1 != val2 ){
-		$("#password_hint").html( "Your password is not match." );
-		$("#password_hint").show();
-		//check = true;
-		//$( "#reg_submit" ).hide();
-		$( "#info" ).val('1');
-	} else {
-		$("#password_hint").html( "" );
-		$("#password_hint").hide();
-		
-		//check = false;
-		/*if( check==false && check2 == false ){
-			$( "#reg_submit" ).show();
-		}
-		*/
-		$( "#info" ).val('9');
-		alert( $( "#info" ).val() );
-		
-	}
-} );
-
-$("#username").blur( function(){
-	username = $(this).val();
-	url =  "/<?= $site_url ?>/ajax/ajax";
-	$.ajax( {
-		url: url,
-		dataType: "json",
-		type:　"post",
-		async: false,
-		data:{ a:"UserNameCheck", username: username},
-		success:function(data){
-		//console.log( data );
-		if ( data['msg'] == 'This username has been used.'){
-			$(" #username_hint ").html('This username has been used.');
-			$("#username_hint").show();
-			$( "#info" ).val('2');
-			//check2 = true;
+// Call ValidationEngine here
+		jQuery(document).ready(function(){
+			// binds form submission and fields to the validation engine
+			jQuery("#UserRegisterForm").validationEngine({ajaxFormValidation: true});
 			
-		} else if ( data['msg'] == 'You can use this username.' ){
-			$(" #username_hint ").html('This username is open.' );
-			$("#username_hint").show();
-			$( "#info" ).val('9');
-			//check2 = false;
+						
+			
+		});
+		/**
+		*
+		* @param {jqObject} the field where the validation applies
+		* @param {Array[String]} validation rules for this field
+		* @param {int} rule index
+		* @param {Map} form options
+		* @return an error string if validation failed
+		*/
+		function checkHELLO(field, rules, i, options){
+			if (field.val() != "HELLO") {
+				// this allows to use i18 for the error msgs
+				return options.allrules.validate2fields.alertText;
+			}
 		}
-		
-		
-		},
-		error:function(data){
-		//console.log( data );
-		}
-		
-	} );
 	
-} );
-
-
-
-
 </script>
-
-
-
-
-
+<script>
+function goback( ){
+	//e.preventDefault();
+	window.location.href="/<?=$site_url?>";
+	
+}
+</script>
 
 
 

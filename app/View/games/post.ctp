@@ -143,25 +143,44 @@
 
 	<div id="reply_div" hidden>
 		
-		<div class="reply_div_form">
-				<form action="/bbs_example/games/post_reply" id="" enctype="multipart/form-data" method="post"  accept-charset="utf-8">
-				<label for="subtitle">Sub-title</label><input name="data[Post_reply][title]" id="subtitle" maxlength="50"></input>
-				<label for="text">text</label><textarea name="data[Post_reply][text]" id="text" cols="30" rows="6"></textarea>
-				<input name="data[pic]" id="picture" type="file" />
+		
+		<div class="new_reply_div">
+			<form action="/bbs_example/games/post_reply" id="replyForm" enctype="multipart/form-data" method="post"  accept-charset="utf-8" class="form_1">
+				<table cellspacing=2 cellpadding=0 width=300 border=0>
+				<tr>
+				<td><font class="en1">Sub-title:</font> </td>
+				<td><input size=60 <input name="data[Post_reply][title]" id="subtitle"  class="input1" onblur="this.className='input1'" onfocus="this.className='input1-bor'">
+				</td>
+				</tr>
+				<tr>
+				<td><font class="en1">Content: </font> </td>
+				<td><textarea name="data[Post_reply][text]" id="text" rows=8 cols=60 class="input1" onblur="this.className='input1 validate[required] minSize[10]'" onfocus="this.className='input1-bor validate[required] minSize[10]'"></textarea>
+				</td>
+				</tr>
+				<tr>
+				<td><font class="en1">Pic: </font> </td>
+				<td><input name="data[pic]" id="picture" type="file" />
+				</td>
+				</tr>
+			
+				<tr>
+				<td><font class="en1"></font> </td>
+				<td>  <input type="submit" id="reply_cancel_button"  value="Cancel"/>  <input type="submit" value="submit" id="submit">
+				</td>
+				</tr>
 				
-				<input name="data[Post_reply][written_by]" id="" hidden value="<?= $poster ?>" />	
+				
+				
 				<input name="data[Post_reply][post_id]" id="" hidden value="<?=  $post['Post']['id'] ?>" />	
-				<input type="submit" value="submit" id="submit" />
-				<input type="submit" id="reply_cancel_button"  value="Cancel"/>
-					</form>
-				
+				<input name="data[Post_reply][written_by]" id="" hidden value="<?= $poster ?>" />	
+				</table>
+					
+			</form>
 		</div>
 		
-		<div class="reply_div_footer">
-
-				
-		</div>
 		
+		
+		<div class="reply_div_footer"></div>
 	</div>
 </div>
 
@@ -181,7 +200,32 @@ function reply( text, floor){
 	$("#reply_div").show();
 	$("#subtitle").val( '@ #'+ floor + '     ' + str + '...');
 	$("#text").val();
+	$("#text").focus();
+	
 }
+</script>
+
+<script>
+// Call ValidationEngine here
+		jQuery(document).ready(function(){
+			// binds form submission and fields to the validation engine
+			jQuery("#replyForm").validationEngine();
+		});
+		/**
+		*
+		* @param {jqObject} the field where the validation applies
+		* @param {Array[String]} validation rules for this field
+		* @param {int} rule index
+		* @param {Map} form options
+		* @return an error string if validation failed
+		*/
+		function checkHELLO(field, rules, i, options){
+			if (field.val() != "HELLO") {
+				// this allows to use i18 for the error msgs
+				return options.allrules.validate2fields.alertText;
+			}
+		}
+	
 </script>
 
 <?php

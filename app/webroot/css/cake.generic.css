@@ -284,7 +284,7 @@ fieldset fieldset div {
 	clear: left;
 	margin: 0 20px;
 }
-form div {
+form divXXXXX {
 	clear: both;
 	margin-bottom: 1em;
 	padding: .5em;
@@ -729,3 +729,4 @@ pre {
 #url-rewriting-warning {
 	display:none;
 }
+

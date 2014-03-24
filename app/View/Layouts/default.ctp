@@ -58,6 +58,11 @@ $site_url = __d( 'SITE', 'bbs_example' );
 	<script type="text/javascript" src="/<?= $site_url ?>/zzz/nivo/jquery.nivo.slider.js"></script>
 	<link rel="stylesheet" href="/<?= $site_url ?>/zzz/nivo/nivo-slider.css" type="text/css" media="screen" />
 	
+	<!-- validationEngine -->
+	<script src="/<?= $site_url ?>/zzz/jQuery-Validation-Engine-master/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/<?= $site_url ?>/zzz/jQuery-Validation-Engine-master/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="/<?= $site_url ?>/zzz/jQuery-Validation-Engine-master/css/validationEngine.jquery.css" type="text/css"/>
+	
 </head>
 <body>
 	<div id="container">

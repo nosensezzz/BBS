@@ -9,27 +9,19 @@
 	
 		if( !$id ){
 		?>
-			<div class="central_window">
-				<script>
+			<script>
 					// 没注册用户的处理
-					$( function(){
-						setInterval( 'back_to_index()' ,3000); 
-					});
+					window.location.href="/bbs_example"
 				
-				</script>
+			</script>
+			<div class="central_window">
 				<?php
-				
-				echo $this->Html->link('You need to register first. Click here to go back' , '/' );
+				//echo $this->Html->link('You need to register first. Click here to go back' , '/' );
 				?>
-				
 				<script>
-				
-				
 				</script>
 			</div>
-			<script>
-			
-			</script>
+		
 		<?php
 		} else {
 		// ***********************************          User information
