@@ -17,9 +17,9 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = __d('cake_dev', 'This site used for display only.');
+$cakeDescription = __d('cake_dev', 'have fun and get all you want here.');
 
-$title = __d( 'title' , 'Game BBS' );
+$title = __d( 'title' , 'nonsense 游戏讨论和交易中心' );
 
 $site_url = __d( 'SITE', 'bbs_example' );
 
@@ -33,20 +33,24 @@ $site_url = __d( 'SITE', 'bbs_example' );
 	<?php echo $this->Html->charset(); ?>
 	<title>
 		<?php echo $title ?>
-		<?php //echo $title_for_layout; ?>
+		<?php echo ' - ' . $title_for_layout; ?>
 	</title>
+		<meta name="description" content="A place to enhance your skill at all kinds game ">
+		<meta name="keywords" content="games, clash of clans, dota2, <?= $title_for_layout ?>">
+		<meta name="author" content="">
+		<meta charset="UTF-8">
 	<?php
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css('cake.generic');
 
-		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
 	<!-- My CSS-->
 	<link rel="stylesheet" href="/<?= $site_url ?>/zzz/css/zzz.css" type="text/css" media="screen" />
-	
+	<!-- User Nav Bar -->
+	<link rel="stylesheet" href="/<?= $site_url ?>/zzz/nav_bar_css/menu_style.css" type="text/css" media="screen" />
 	<!-- Jquery JS  -->
 	<script type="text/javascript" src="/<?= $site_url ?>/zzz/jquery/jquery-1.9.1.js"></script>
 	<script type="text/javascript" src="/<?= $site_url ?>/zzz/jquery/jquery-ui-1.10.3.custom.js"></script>
@@ -63,6 +67,13 @@ $site_url = __d( 'SITE', 'bbs_example' );
 	<script src="/<?= $site_url ?>/zzz/jQuery-Validation-Engine-master/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 	<link rel="stylesheet" href="/<?= $site_url ?>/zzz/jQuery-Validation-Engine-master/css/validationEngine.jquery.css" type="text/css"/>
 	
+	<!-- uploadify -->
+	<script src="/<?= Configure::read('site_name') ?>/zzz/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="/<?= Configure::read('site_name') ?>/zzz/uploadify/uploadify.css">
+	
+	<!-- CSS for Drop Down Tabs Menu #1 -->
+	<link rel="stylesheet" type="text/css" href="/<?= Configure::read('site_name') ?>/zzz/top_nav_bar/top_nav/ddcolortabs.css" />
+	<script type="text/javascript" src="/<?= Configure::read('site_name') ?>/zzz/top_nav_bar/top_nav/dropdowntabs.js"></script>
 </head>
 <body>
 	<div id="container">

@@ -6,9 +6,17 @@ class UserController extends AppController {
 	public $helpers = array ( 'Html' , 'Form');
 	//public $components = array('DebugKit.Toolbar' => array('panels' => array()));
 	
+	public function afterFilter(){
+	// renew session, not sure if it works
+		$this->Session->renew();
+	}
 	
 	
 	public function register(){
+	
+		if( $this->Session->read('id')){
+			$this->redirect( array( 'controller' => 'forum' , 'action' => ''));
+		}
 	
 		$this->loadModel( 'User' );
 	
@@ -32,7 +40,7 @@ class UserController extends AppController {
 							$this->request->data['User']['created_time'] = time();
 							$this->request->data['User']['status'] = 0 ;
 							
-							$this->request->data['User']['password'] = Security::hash(
+							$this->request->data['User']['password'] = OnlyHash::hash(
 							$this->request->data['User']['password']
 							);
 							
@@ -106,9 +114,6 @@ class UserController extends AppController {
 		//echo $_GET['id'];
 			
 			$id = $_GET['id'];
-			
-			
-			
 			$find = $this->User->find( 'first' , array(
 				'conditions' => array(
 					'id' => $id,
@@ -119,8 +124,23 @@ class UserController extends AppController {
 			//var_dump( $find );
 			//die();
 			if ( $find ){
+			
+			//Session variables
 				$this->Session->write('id', $find['User']['id'] );
-				$this->Session->setFlash('Welcome back ' . $find['User']['username'] . '!' );
+				$this->Session->write('user', $find['User'] );
+				$this->loadModel('Post_category');
+				$category = $this->Post_category->find('all');
+				$count = 0;
+				foreach( $category as $cate ){
+					$cate_info[$count]['cate'] = $cate['Post_category'];
+					$count++;
+				}
+				$this->Session->write('cate' , $cate_info);
+				//var_dump($category[0]);
+				//die();
+				
+		
+				//$this->Session->setFlash('Welcome back ' . $find['User']['username'] . '!' );
 				$this->redirect( array( 'controller' => 'forum' , 'action' => 'index'));
 			} else{
 				echo 'error';
@@ -134,7 +154,7 @@ class UserController extends AppController {
 	
 	public function logout(){
 		$this->Session->destroy();
-		$this->redirect( array( 'controller' => 'index' , 'action' => 'index'));
+		$this->redirect( "/" );
 	
 	}
 	
@@ -183,6 +203,122 @@ class UserController extends AppController {
 	
 	
 	die();
+	}
+	
+	public function user_edit( $id ){
+		
+		$this->loadModel('User');
+		$user = $this->User->find('first' , array(
+			'conditions' => array(
+				'id' => $id ,
+			)
+		));
+		$this->set('user', $user['User']);
+		
+		
+		if( $this->request->is('post')){
+			//die(var_dump($this->request->data));
+			if( empty($this->request->data['pwd']) ):
+			$this->User->id = $id;
+			$this->User->save($this->request->data);
+			else: if( $this->request->data['pwd'] == '1')
+			$this->User->id = $id;
+			$this->request->data['User']['password'] = OnlyHash::hash($this->request->data['User']['password']);
+			$this->User->save($this->request->data);
+			endif;
+			
+			$this->redirect( array( 'controller' => 'user' , 'action' => 'user_edit' , $id));
+		}
+		
+	}
+	
+	public function editCheck(){
+	//die(var_dump($this->request));
+	$original = $this->Session->read('user');
+		$checkValue = $_GET['fieldValue'];
+		$checkId = $_GET['fieldId'];
+		$callback[0] = $_GET['fieldId'];
+		$this->loadModel( 'User' );
+		if($checkId  == 'email'){
+			$user = $this->User->find('first' , array(
+				'conditions' => array(
+					'Email' => $checkValue,
+				)
+			));
+				if( count($user) > 0 ){
+					if( $user['User']['Email'] == $original['Email'] ){
+						$callback[1] = true;
+						echo json_encode( $callback );
+					}else{
+						$callback[1] = false;
+						echo json_encode( $callback );
+						}
+				} else {
+					$callback[1] = true;
+					echo json_encode( $callback );
+				}
+		} else if($checkId  == 'username'){
+			$user = $this->User->find('first' , array(
+				'conditions' => array(
+					'username' => $checkValue,
+				)
+			));
+				if( count($user) > 0 ){
+					if( $user['User']['username'] == $original['username'] ){
+						$callback[1] = true;
+						echo json_encode( $callback );
+					}else{
+						$callback[1] = false;
+						echo json_encode( $callback );
+						}
+				} else {
+					$callback[1] = true;
+					echo json_encode( $callback );
+				}
+		}
+	
+	
+		die();
+	}
+	
+	public function avatarCheck(){
+		//var_dump($_POST);
+		//$targetFolder = '/uploads'; // Relative to the root
+		$verifyToken = md5('unique_salt' . $_POST['timestamp']);
+		$user = $this->Session->read('user');
+		$id = $user['id'];
+		if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
+				$new_folder_path = WWW_ROOT . 'zzz' . DS . 'picture' . DS .  'user' .DS . $this->Session->read('id');
+				$dir = new Folder( $new_folder_path , true, 0755);
+				$tempFile = $_FILES['Filedata']['tmp_name'];
+				$filename = explode(".",$_FILES['Filedata']['name']);
+				$count = count( $filename );
+				$count--;
+				
+				//echo $filename[$count];
+			// Validate the file type
+				$fileTypes = array('jpg','jpeg','gif','png'); // File extensions
+			
+			if (in_array($filename[$count],$fileTypes)) {
+				
+				$filename[0] = $id . '_avatar';
+				$name = implode(".",$filename);
+				$path = $new_folder_path . DS . $name;
+				move_uploaded_file($tempFile,$path);
+				// save path to DB
+				$user = array('id' => $id, 'avatar' => $name);
+				$this->loadModel('User');
+				$this->User->save($user);
+				
+				$callback = '/' . $path;
+				echo $callback;
+			} else {
+				echo '2';
+				
+			}
+		}
+		
+		die();
 	}
 	
 	

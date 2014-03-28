@@ -21,12 +21,12 @@
 	</div>
 	<div class="inner_post_category"><?= $post['Post_category']['category'] ?></div>
 	<hr style="margin:10px;"/>
-	<div class="post_control_panel">
+	<!-- div class="post_control_panel">
 	
 	<button class='control_panel_button'>reply</button>
 	<button class='control_panel_button'>reply</button>
 	<button class='control_panel_button'>reply</button>
-	</div>
+	</div -->
 	
 	
 	<div class="inner_post_content">

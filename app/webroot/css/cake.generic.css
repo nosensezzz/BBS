@@ -23,7 +23,7 @@
 
 /** General Style Info **/
 body {
-	background: #A1EDFF;
+	background: black;
 	color: #fff;
 	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
 	font-size:90%;
@@ -65,9 +65,7 @@ h4 {
 	color: #993;
 	font-weight: normal;
 }
-ul, li {
-	margin: 0 12px;
-}
+
 p {
 	margin: 0 0 1em 0;
 }
@@ -83,20 +81,20 @@ height: 20px;
 }
 #header h1 {
 	line-height:20px;
-	background: #A1EDFF url('../img/nosensezzz.jpg') no-repeat left;
+	background: #000000 url('../img/skull_logo_original.png') no-repeat left;
 	color: #fff;
 	padding: 0px 30px;
 }
 #header h1 a {
 	color: #fff;
-	background: #A1EDFF;
+	background: #black;
 	font-weight: normal;
 	text-decoration: none;
 }
 #header h1 a:hover {
 	color: #fff;
-	background: #A1EDFF;
-	text-decoration: underline;
+	//background: #515151;
+	text-decoration: none;
 }
 #content{
 	background: #fff;
@@ -320,12 +318,7 @@ option {
 	font-size: 120%;
 	padding: 0 3px;
 }
-input[type=checkbox] {
-	clear: left;
-	float: left;
-	margin: 0px 6px 7px 2px;
-	width: auto;
-}
+
 div.checkbox label {
 	display: inline;
 }

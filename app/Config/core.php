@@ -380,3 +380,4 @@ Cache::config('_cake_model_', array(
 
 
 Configure::write('debug', 1);
+Configure::write('site_name', 'bbs_example');

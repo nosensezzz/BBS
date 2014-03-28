@@ -8,14 +8,14 @@
 	<div class="inner_wrapper" >
 		<div class="high_light_area">
 			<div class="high_light_area_header">
-				<div id="notice_header" ><div id="notice_header_content">Notice</div></div>
+				<div id="notice_header" ><div id="notice_header_content">Recent Suggestions</div></div>
 				<div id="recentpost_header" ><div id="recentpost_header_content">Most Recent Topic</div></div>
 				<div id="recentreply_header" ><div id="recentreply_header_content">Hot Category</div></div>
 			</div>
 			<div class="high_light_area_content">
 				<div class="high_light_area_notice" >
 					<div id="content_div">
-						11111111
+						
 					</div>
 				</div>
 				
@@ -41,9 +41,8 @@
 							foreach( $category as $cate ){
 								$cate_count = 0;
 								//var_dump( $cate);
+								
 								?>
-								<p><a class="high_light_a" href="">
-								[<?= $cate['Post_category']['category'] ?>]
 								<?php
 									//var_dump( $cate );
 									foreach( $cate['Post'] as $cate_post ){
@@ -52,11 +51,15 @@
 										//echo $today;
 										if( $cate_post['created_time'] > $today ){ $cate_count++; }
 									} 
-									echo '(' . $cate_count . ')';
 								?>
+								<p><a class="high_light_a" href="">
+								<?php 
+								if( $cate_count > 0):
+								echo '[' . $cate['Post_category']['category'] . '] (' . $cate_count . ')'; 
+								endif;   ?>
 								</a></p>
 								<?php
-								
+									//var_dump($category);
 							}
 						?>
 					</div>
@@ -64,20 +67,57 @@
 			</div>
 		</div>
 		
-		<hr/>
+		<hr style="margin-top:10px;"/>
 		
 		<div class="category">
-			<div class="cate_colunm_2">
-				<div class='cate_game_coc' onclick="entry_coc()" >
-				<img class="cate_entry" src="zzz/picture/coc/cate_button.jpg" style="width:100%;" />
-				</div>
-				<div class='cate_game_coc' onclick="entry_dota2()">
-				<img class="cate_entry" src="zzz/picture/dota2/cate_button.jpg" style="width:100%;" />
-				</div>
+	
+			
+			<div class="category_table_div">
+						
+						<table class="cate_table">
+					
+					
+						<tr id="th">
+							<!--th id="th_id">img</th> <th>Category</th> <th>Topic</th>  <th>Last Post</th> <th>Time</th> <th>View/Reply</th-->
+						<tr>
+					
+					<?php
+						foreach( $category as $cate){
+							//die ( var_dump($post) );
+						?>
+							
+							
+							<tr onclick="select_this_cate( <?= $cate['Post_category']['id'] ?> )" id="post">
+								<td id="tr_id"><img src="/<?php echo Configure::read( 'site_name' );?>/zzz/picture/<?= $cate['Post_category']['id']?>/cate_logo.jpg"  /></td>
+								<td><?=$cate['Post_category']['category']?></td>
+								<?php  if($cate['Post_category']['id'] == 0): ?>
+								<td><?php echo ' - '; ?></td>
+								<?php else:?>
+								<td><?php echo count($cate['Post']); ?></td>
+								<?php endif; ?>
+								<td>Last Posted By - <?php 
+								$i = end( $cate['Post'] );
+								echo date('Y-m-d H:i:s', $i['created_time']);  ?></td>
+								<td>Admin : <?= $cate['Post_category']['admin']?></td>
+								
+							</tr>
+							
+							
+							
+						<?php
+						}
+					?>
+					</table>
+			
+			
+			
 			</div>
+			
+		
+	
 		</div>
 		
-	</div>
+</div>
 
 
 	
@@ -85,17 +125,7 @@
 
 
 
-<script>
-function entry_coc(){
-	window.location.href="games/coc?category=1";
-}
 
-function entry_dota2(){
-	window.location.href="games/coc?category=2";
-}
-
-
-</script>
 
 <?php
 	$this->end();

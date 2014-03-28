@@ -7,11 +7,13 @@ class ForumController extends AppController {
 	public function index(){
 		$this->loadModel( 'Post' );
 		$recent_posts = $this->Post->find('all' , array(
-				'conditions' => array(),
+				'conditions' => array(
+					'Post.category !=' => 0,
+				),
 				'limit' => 10,
 				'order' => array( 'Post.created_time DESC' ),
 		));
-		
+		//die( var_dump( $recent_posts ) );
 		$time = time();
 		
 		$this->loadModel( 'Post_category' );

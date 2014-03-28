@@ -102,6 +102,7 @@ App::uses('OnlyHash' , 'zzz');
 App::uses('Folder', 'Utility');
 date_default_timezone_set("US/Eastern");
 
+//$site_name ='bbs_example';
 
 CakeLog::config('debug', array(
 	'engine' => 'File',

@@ -1,7 +1,12 @@
 <?php
 // constant
 $site_url = 'bbs_example';
+
+$title = __d( 'title' , 'BBS' );
 ?>
+
+
+
 <div style="padding-top:40px;">
 
 <div class="wrapper">

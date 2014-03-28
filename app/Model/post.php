@@ -2,7 +2,7 @@
 
 class Post extends AppModel {
      public $name = 'Post';
-	 public $useTable = 'post';
+	 public $useTable = 'Post';
 	 
 	 
 	 public $belongsTo = array(

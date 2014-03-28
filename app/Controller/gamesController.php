@@ -1,6 +1,6 @@
 <?php
 
-define("COC" , 1);
+//define("COC" , 1);
 
 
 class GamesController extends AppController {
@@ -11,8 +11,9 @@ class GamesController extends AppController {
 	
 
 	public function coc(){
+		
 	
-		if( empty($_GET['category']) ){
+		if( empty($_GET['category']) && $_GET['category'] != 0 ){
 			echo 'error';
 				die();
 		} else if( empty($_GET['page'])){
@@ -134,8 +135,8 @@ class GamesController extends AppController {
 							'Post.id'  => $post_id
 						)
 					));
+				$this->set('title_for_layout', $post['Post']['title']);
 
-					
 				// 给post-reply找到发布者的username
 				$step = 0;
 				foreach( $post['Post_reply'] as $reply ){

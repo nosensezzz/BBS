@@ -31,7 +31,6 @@ define('ROOT', dirname(__FILE__));
 define('WEBROOT_DIR', 'webroot');
 define('WWW_ROOT', ROOT . DS . APP_DIR . DS . WEBROOT_DIR . DS);
 
-define('SITE_URL' , 'bbs_example');
 
 /**
  * This only needs to be changed if the "cake" directory is located
