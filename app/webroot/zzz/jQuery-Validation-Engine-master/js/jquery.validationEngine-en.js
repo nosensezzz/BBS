@@ -188,23 +188,6 @@
 	                    // speaks by itself
 	                    "alertTextLoad": "* Validating, please wait"
 	                },
-					"ajaxEditCall": {
-	                    // remote json service location
-	                    "url": "/" + site + "/user/editCheck",
-	                    // error
-	                    "alertText": "* This Email is already taken",
-	                    // speaks by itself
-	                    "alertTextLoad": "* Validating, please wait"
-	                },
-					"ajaxAvatarCall": {
-	                    // remote json service location
-	                    "url": "/" + site + "/user/avatarCheck",
-	                    // error
-						"extraDataDynamic":['#picture'],
-	                    "alertText": "* This Email is already taken",
-	                    // speaks by itself
-	                    "alertTextLoad": "* Validating, please wait"
-	                },
 					
 				
                 "validate2fields": {
