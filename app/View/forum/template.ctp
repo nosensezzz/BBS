@@ -84,9 +84,16 @@
 			<div class="siderbar_mid_part">
 			<ul>	
 				<span>Categories</span>
-				<?php foreach($cate as $category):	?>
+				<?php
+					//var_dump($cate);
+					foreach($cate as $category):
+					if( $category['cate']['id'] != 0 ):
+				?>
 				<li onclick="select_this_cate( <?=$category['cate']['id']?> )" ><a href="#"><?=$category['cate']['short']?></a></li>
-				<?php endforeach; ?>
+				<?php 
+					endif;
+					endforeach;
+					?>
 			</ul>
 			</div>
 			<hr/>

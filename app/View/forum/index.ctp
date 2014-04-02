@@ -15,7 +15,17 @@
 			<div class="high_light_area_content">
 				<div class="high_light_area_notice" >
 					<div id="content_div">
-						
+						<?php
+							foreach( $recent_sugg as $sugg ){
+								//var_dump( $post);
+								?>
+								<p><a class="high_light_a" href="/bbs_example/games/post?id=<?= $sugg['Post']['id'] ?>">
+								<?= $sugg['Post']['title'] ?> 
+								</a></p>
+								<?php
+								
+							}
+						?>
 					</div>
 				</div>
 				
@@ -83,22 +93,32 @@
 					
 					<?php
 						foreach( $category as $cate){
+							$active_posts_count = 0;
 							//die ( var_dump($post) );
 						?>
 							
 							
-							<tr onclick="select_this_cate( <?= $cate['Post_category']['id'] ?> )" id="post">
+							<tr onclick="select_this_cate( <?= $cate['Post_category']['id'] ?> )" id="post" style="cursor:pointer;" >
 								<td id="tr_id"><img src="/<?php echo Configure::read( 'site_name' );?>/zzz/picture/<?= $cate['Post_category']['id']?>/cate_logo.jpg"  /></td>
-								<td><?=$cate['Post_category']['category']?></td>
+								<td style="width:70%;padding-left:25px;"><?=$cate['Post_category']['category']?></td>
 								<?php  if($cate['Post_category']['id'] == 0): ?>
-								<td><?php echo ' - '; ?></td>
+								<td style="width:5%;text-align:center;"><?php echo ' - '; ?></td>
 								<?php else:?>
-								<td><?php echo count($cate['Post']); ?></td>
+								<td style="width:5%;text-align:center;"><?php 
+									foreach( $cate['Post'] as $post ){
+										$post['status'] > 0?$active_posts_count++:'';
+									}
+									echo $active_posts_count;
+								?></td>
 								<?php endif; ?>
-								<td>Last Posted By - <?php 
+								
+								<td><?php  if($cate['Post_category']['id'] == 0):      echo '-'; ?><?php 
+								else:
 								$i = end( $cate['Post'] );
-								echo date('Y-m-d H:i:s', $i['created_time']);  ?></td>
-								<td>Admin : <?= $cate['Post_category']['admin']?></td>
+								echo 'Last Posted By - ' . date('Y-m-d H:i:s', $i['created_time']); 
+								endif;
+								?></td>
+								
 								
 							</tr>
 							

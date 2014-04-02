@@ -13,6 +13,10 @@ class Post_category extends AppModel {
 		)
 	 );
 	 
+	 public $belongTo = array(
+		
+		
+	 );
 
 	 
 	 

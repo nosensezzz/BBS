@@ -60,7 +60,7 @@
 			//echo $total_posts;
 			$page = 1;
 			while( $total_posts > 0 ){
-				$total_posts -= 10;
+				$total_posts -= 20;
 				?>
 				<a href="?category=<?=$category?>&page=<?= $page?>"><?=$page++?></a>
 				
@@ -79,7 +79,7 @@
 		<!-- new form div -->
 		
 		<div class="new_post_div" hidden>
-			<form action="/bbs_example/games/coc_new_post" id="postForm" enctype="multipart/form-data" method="post"  accept-charset="utf-8" class="form_1">
+			<form action="/<?=Configure::read('site_name')?>/games/coc_new_post" id="postForm" enctype="multipart/form-data" method="post"  accept-charset="utf-8" class="form_1">
 				<table cellspacing=2 cellpadding=0 width=300 border=0>
 				<tr>
 				<td><font class="en1">Subject:</font> </td>

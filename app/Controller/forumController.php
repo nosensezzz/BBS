@@ -9,6 +9,16 @@ class ForumController extends AppController {
 		$recent_posts = $this->Post->find('all' , array(
 				'conditions' => array(
 					'Post.category !=' => 0,
+					'Post.status !=' => 0,
+				),
+				'limit' => 10,
+				'order' => array( 'Post.created_time DESC' ),
+		));
+		
+		$recent_sugg = $this->Post->find('all' , array(
+				'conditions' => array(
+					'Post.category =' => 0,
+					'Post.status !=' => 0,
 				),
 				'limit' => 10,
 				'order' => array( 'Post.created_time DESC' ),
@@ -21,7 +31,7 @@ class ForumController extends AppController {
 				'conditions' => array(
 				),
 		));
-		
+		$this->set(  'recent_sugg' , $recent_sugg);
 		$this->set( 'recent_posts' , $recent_posts );
 		$this->set( 'category' , $category );
 	//	$this->set( 'root' , $this->Session->read('root') );

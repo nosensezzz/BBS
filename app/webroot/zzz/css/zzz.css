@@ -3,7 +3,7 @@
 @import url(http://fonts.googleapis.com/css?family=Candal);
 
 div{
-	//overflow:hidden;
+	overflow:hidden;
 }
 
 .template_{
@@ -27,7 +27,7 @@ position:relative;
 }
 
 .right_part_top_links{
-	height:20px;
+	height:35px;
 }
 
 .form_1{
@@ -328,7 +328,7 @@ padding:3px;
 	background:rgb(232, 235, 234);
 	padding:10px;
 	margin-top:10px;
-	min-height:200px;
+	//min-height:200px;
 	border:solid 1px;
 }
 
@@ -344,13 +344,13 @@ padding:3px;
 div > #reply_div{
 	display: none;
 	border:solid 3px;
-	overflow-x:hidden;
+	overflow-x:scroll;
 	overflow-y:scroll;
 	position: fixed; 
 	top: 25%; 
-	left: 25%; 
-	width: 50%; 
-	height: 39%; 
+	left: 23%; 
+	width: 55%; 
+	height: 40%; 
 	background-color: rgb(229, 229, 229); 
 	z-index:1001; 
 	-moz-opacity: 0.9; 
@@ -436,3 +436,32 @@ border: 1px solid #333333;}
 
 .user_edit_div{padding:50px;}
 .user_edit_div > .edit_form{padding:40px;}
+
+.admin_login_div{
+border: solid 3px;
+//overflow-x: scroll;
+//overflow-y: scroll;
+position: relative;
+
+margin-left:auto;
+margin-right:auto;
+margin-top:100px;
+width:600px;
+
+//height: 220px;
+background-color: rgb(229, 229, 229);
+z-index: 1001;
+-moz-opacity: 0.9;
+opacity: 1;
+
+}
+
+.admin_wrapper{
+
+margin-left:auto;
+margin-right:auto;
+width:1200px;
+overflow:hidden;
+}
+.admin_action_bar{}
+.admin_action_bar button{float:right;}

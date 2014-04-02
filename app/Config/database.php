@@ -67,7 +67,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'root',
 		'password' => '',
-		'database' => 'bbs_use',
+		'database' => 'bbssite',
 		'prefix' => '',
 		'encoding' => 'utf8',
 	);

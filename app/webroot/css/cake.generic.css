@@ -144,7 +144,7 @@ table {
 	margin-bottom: 10px;
 	width: 100%;
 }
-th {
+thhh {
 	border:0;
 	border-bottom:2px solid #555;
 	text-align: left;
@@ -323,11 +323,11 @@ div.checkbox label {
 	display: inline;
 }
 input[type=radio] {
-	float:left;
+	//float:left;
 	width:auto;
-	margin: 6px 0;
+	//margin: 6px 0;
 	padding: 0;
-	line-height: 26px;
+	//line-height: 26px;
 }
 .radio label {
 	margin: 0 0 6px 20px;

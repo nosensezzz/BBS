@@ -32,18 +32,19 @@ class GamesController extends AppController {
 					'Post.category' => $this->Session->read('category'),
 				)
 			));	
+			$total_posts = count( $posts );
 			
 			$this->loadModel( 'Post' );
 			$list_posts = $this->Post->find('all' , array(
 				'conditions' => array(
 					'Post.category' => $this->Session->read('category'),
 				),
-				'limit' => 10,
+				'limit' => 20,
 				'page' => $page,
 				'order' => array( 'Post.created_time DESC' ),
 			));	
 			//die(var_dump( $list_posts ));
-			$total_posts = count( $posts );
+			
 			
 			
 			$this->set ('posts' , $posts);
@@ -94,7 +95,7 @@ class GamesController extends AppController {
 					} 
 			}else if( $this->request->data['pic']['size'] == 0 ){
 					$this->request->data['Post']['created_time'] = time();
-					$this->request->data['Post']['status'] = 0;
+					$this->request->data['Post']['status'] = 1;
 					$this->request->data['Post']['ip'] = $function->GetIP();
 					if($this->Post->save(( $this->request->data))){
 							// save in database
