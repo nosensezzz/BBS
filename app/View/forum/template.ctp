@@ -47,7 +47,11 @@
 	
 	
 				<li class="top_right"><a href="/<?= Configure::read('site_name')?>/user/logout" class="top_link"><span>Logout</span></a></li>
+				<?php if($this->Session->read('id') == 1){
+				}else{  
+				?>
 				<li class="top_right"><a href="/<?=$site_url?>/user/user_edit/<?= $id ?>" class="top_link"><span>Edit</span></a></li>
+				<?php  }  ?>
 				<li class="top_right">
 						<div class="time_panel">
 						<?php echo date('Y-m-d H:i', time());  ?>

@@ -37,7 +37,7 @@
 				
 				<tr onclick="select_this_post( <?= $post['Post']['id'] ?> )" id="post">
 					<td id="tr_id"><?= $post['Post']['category'] ?>-<?= $post['Post']['id'] ?></td>
-					<td>TBD</td>
+					<td><?php  if($post['Post']['status'] == 1): echo 'Pending';else: echo 'Good'; endif; ?></td>
 					<td><?= $post['Post']['poster_id'] ?></td>
 					<td><?= $post['Post']['title'] ?></td>
 					<td> <?php echo date('Y-m-d H:i:s', $post['Post']['created_time']);  ?></td>

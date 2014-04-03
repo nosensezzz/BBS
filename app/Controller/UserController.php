@@ -6,10 +6,6 @@ class UserController extends AppController {
 	public $helpers = array ( 'Html' , 'Form');
 	//public $components = array('DebugKit.Toolbar' => array('panels' => array()));
 	
-	public function afterFilter(){
-	// renew session, not sure if it works
-		$this->Session->renew();
-	}
 	
 	
 	public function register(){
@@ -71,11 +67,6 @@ class UserController extends AppController {
 		
 	}
 
-	public function anonymity(){
-
-		
-	}
-	
 	public function login(){
 		//var_dump( $_POST );
 		
@@ -206,6 +197,10 @@ class UserController extends AppController {
 	}
 	
 	public function user_edit( $id ){
+	
+		if($id == 1){
+			die('wrong');
+		}
 		
 		$this->loadModel('User');
 		$user = $this->User->find('first' , array(
@@ -319,6 +314,26 @@ class UserController extends AppController {
 		}
 		
 		die();
+	}
+	public function anonymity(){
+		$this->loadModel('User');
+		$this->loadModel('Post_category');
+		$find = $this->User->findById(1);
+		$this->Session->write('id', $find['User']['id'] );
+		$category = $this->Post_category->find('all');
+				$count = 0;
+				foreach( $category as $cate ){
+					$cate_info[$count]['cate'] = $cate['Post_category'];
+					$count++;
+				}
+				$this->Session->write('cate' , $cate_info);
+				//var_dump($category[0]);
+				//die();
+				
+		
+				//$this->Session->setFlash('Welcome back ' . $find['User']['username'] . '!' );
+				$this->redirect( array( 'controller' => 'forum' , 'action' => 'index'));
+		
 	}
 	
 	
