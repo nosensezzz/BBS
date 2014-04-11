@@ -45,7 +45,7 @@
 		</table>
 		
 		<div class="post_text_area">
-				<p><?= $post['Post']['text'] ?>	</p>
+				<p id="text_<?=$floor?>"><?= $post['Post']['text'] ?>	</p>
 		
 		</div>
 		<div class="post_picture_area">
@@ -64,7 +64,7 @@
 			
 			<div class="post_footer_div_userinfo">
 			<?php
-				echo '#' . $floor++ . ' - ';
+				echo '#' . $floor . ' - ';
 				if($post['Post']['ip']){
 					echo "[From :" . $post['Post']['ip'] . "]";
 				}else{
@@ -73,7 +73,7 @@
 			?>
 			</div>
 			
-			<div><button class='post_footer_div_buttons' id="reply_button" onclick="reply( '<?=$post['Post']['text']?>' ,  <?=$floor?> )">reply</button></div>
+			<div><button class='post_footer_div_buttons' id="reply_button" onclick="reply( <?=$floor++ ?> )">reply</button></div>
 		</div>
 	</div>
 <!--             我是分割线              上面是主贴             下面是回复    -->
@@ -102,7 +102,7 @@
 					}
 				?>
 				
-				<p><?= $reply['text'] ?>	</p>
+				<p id="text_<?=$floor?>"><?= $reply['text'] ?>	</p>
 		
 		</div>
 		<div class="post_picture_area">
@@ -120,7 +120,7 @@
 		<div class="post_footer_div">
 			<div class="post_footer_div_userinfo">
 			<?php
-				echo '#' . $floor++ . ' - ';
+				echo '#' . $floor . ' - ';
 				
 				if($reply['ip']){
 					echo "[From :" . $reply['ip'] . "]";
@@ -129,7 +129,7 @@
 				}
 			?>
 			</div>
-			<div><button class='post_footer_div_buttons' onclick="reply( this.value ,  <?=$floor?> )"  value="<?= $reply['text'] ?>" >reply</button></div>
+			<div><button class='post_footer_div_buttons' onclick="reply( <?=$floor++ ?> )"  >reply</button></div>
 			
 		</div>
 	</div>
@@ -154,7 +154,7 @@
 				</tr>
 				<tr>
 				<td><font class="en1">Content: </font> </td>
-				<td><textarea name="data[Post_reply][text]" id="text" rows=8 cols=60 class="input1" onblur="this.className='input1 validate[required] minSize[10]'" onfocus="this.className='input1-bor validate[required] minSize[10]'"></textarea>
+				<td><textarea name="data[Post_reply][text]" id="text" rows=8 cols=60 class="input1" onblur="this.className='input1 validate[required] minSize[5]'" onfocus="this.className='input1-bor validate[required] minSize[5]'"></textarea>
 				</td>
 				</tr>
 				<tr>
@@ -186,6 +186,12 @@
 
 </div>
 <script>
+$( document ).ready( function() {
+	$( 'textarea#text' ).ckeditor();
+} );
+</script>
+<script>
+	
   
   $("#reply_cancel_button").click(function(){
 	event.preventDefault();
@@ -194,9 +200,10 @@
   
 </script>
 <script>
-function reply( text, floor){
-	str = text.substring(0, 20);
-	floor = floor - 1;
+function reply( floor){
+	str = $("#text_"+ floor).html().substring(0, 20);
+	//alert($("#text_"+ floor).html());
+	//floor = floor - 1;
 	$("#reply_div").show();
 	$("#subtitle").val( '@ #'+ floor + '     ' + str + '...');
 	$("#text").val();

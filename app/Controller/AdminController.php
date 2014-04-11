@@ -136,29 +136,77 @@ class AdminController extends AppController {
 	public function ajaxPostDelete($post_id){
 		$this->loadModel('Post');
 		$this->Post->id = $post_id;
-		
-		if($this->Post->delete($post_id)){
-			//$this->redirect( array(  'controller'=>'Admin'  , 'action' => 'category' , $_POST['category']));
-			echo 'success';
+		$post = $this->Post->findById($post_id);
+		//var_dump($post);
+		$pic = $post['Post']['picture'];
+		//die( $pic );
+		if( empty($pic) ){
+			if($this->Post->delete($post_id)){
+				//$this->redirect( array(  'controller'=>'Admin'  , 'action' => 'category' , $_POST['category']));
+				echo 'success';
+			}else{
+				echo 'db delete wrong';
+			}
 		}else{
-			echo 'wrong';
+			$folder_path = WWW_ROOT . 'zzz' . DS .  'picture' .DS . $post['Post']['category'] . DS . $post['Post']['poster_id'] . DS;
+			$folder_path = WWW_ROOT ; 
+			$array = explode( DS , $pic);
+		//	$file = end( $array );
+			array_shift($array);
+			$file = implode(DS , $array);
+			if ( unlink($folder_path . $file ) ){
+				if($this->Post->delete($post_id)){
+					echo 'success';
+				}else{
+					echo 'db delete wrong';
+				}
+			} else {
+				$this->Post->delete($post_id);
+				echo 'picture delete wrong';
+			}
+			
+			
 		}
 		die();
 	}
 	public function ajaxReplyDelete($reply_id){
 		$this->loadModel('Post_reply');
-		//$this->Post->id = $post_id;
+		$this->Post_reply->id = $reply_id;
 		$reply = $this->Post_reply->findById($reply_id);
-		if(!empty($reply['Post_reply']['picture'])){
-		   unlink($aurls[$i]);
-		  }
+		$pic = $reply['Post_reply']['picture'];
+		//var_dump($reply);
 		
-		if($this->Post_reply->delete($reply_id)){
-			//$this->redirect( array(  'controller'=>'Admin'  , 'action' => 'category' , $_POST['category']));
-			echo 'success';
-		}else{
-			echo 'wrong';
+		
+		if(empty($pic)){
+				if($this->Post_reply->delete($reply_id)){
+					echo 'success';
+				}else{
+					echo 'wrong';
+				}
+		} else {
+			//$folder_path = WWW_ROOT . 'zzz' . DS .  'picture' .DS . 'reply' . DS .  $reply['Post_reply']['post_id'] . DS . $reply['Post_reply']['written_by'] . DS;
+			$folder_path = WWW_ROOT ;
+			//die($folder_path);
+			$array = explode( DS , $pic);
+			array_shift($array);
+			$file = implode(DS , $array);
+			//$file = end( $array );
+			//die( $file );
+			if ( unlink($folder_path . $file ) ){
+				if($this->Post_reply->delete($reply_id)){
+					echo 'success';
+				}else{
+					echo 'db delete wrong';
+				}
+			} else {
+				if($this->Post_reply->delete($reply_id)){
+					echo 'success';
+				}else{
+					echo 'wrong';
+				}
+			}
 		}
+		
 		die();
 	}
 	

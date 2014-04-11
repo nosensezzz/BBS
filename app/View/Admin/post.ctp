@@ -60,7 +60,8 @@ Admin - post
 				if(data == 'success'){
 					window.location.href="/<?=Configure::read('site_name')?>/Admin/category/<?=$post['Post']['category']?>";
 				}else{
-					alert('wrong');
+					alert( data );
+					window.location.href="/<?=Configure::read('site_name')?>/Admin/category/<?=$post['Post']['category']?>";
 				}
 			  },
 			});
@@ -115,10 +116,12 @@ Admin - post
 			  data: {category:<?=$post['Post']['category']?>},
 			  url: '/<?= Configure::read('site_name')?>/admin/ajaxReplyDelete/' + reply_id,
 			  success: function (data){
+				//console.log(data);
 				if(data == 'success'){
 					window.location.href="/<?=Configure::read('site_name')?>/Admin/category/<?=$post['Post']['category']?>";
 				}else{
-					alert('wrong');
+					alert( data );
+					window.location.href="/<?=Configure::read('site_name')?>/Admin/category/<?=$post['Post']['category']?>";
 				}
 			  },
 			});

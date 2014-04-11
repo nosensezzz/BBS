@@ -282,7 +282,7 @@ padding:3px;
 }
 
 .post_table td#tr_id img , .cate_table td#tr_id img{
-	height:28px; width:28px;
+	height:28px; width:28px; margin-top:5px;
 }
 
 .post_table tr#post , .cate_table tr#post{
@@ -347,10 +347,10 @@ div > #reply_div{
 	overflow-x:scroll;
 	overflow-y:scroll;
 	position: fixed; 
-	top: 25%; 
-	left: 23%; 
-	width: 55%; 
-	height: 40%; 
+	top: 17%; 
+	left: 20%; 
+	width: 60%; 
+	height: 60%; 
 	background-color: rgb(229, 229, 229); 
 	z-index:1001; 
 	-moz-opacity: 0.9; 
@@ -465,3 +465,7 @@ overflow:hidden;
 }
 .admin_action_bar{}
 .admin_action_bar button{float:right;}
+
+.search_result_div{padding:20px; width:70%;}
+.search_single_div{padding:20px;}
+

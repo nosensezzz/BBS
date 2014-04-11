@@ -31,7 +31,10 @@ Admin - category
 								<?= $post['Post']['text'] ?>
 								</td>
 
-								<td style="width:2%;text-align:center;"><input <?php echo empty($post['picture'])?'':'checked="checked"'; ?> type="radio" disabled /></td>
+								<?php
+									//var_dump($post);
+								?>
+								<td style="width:2%;text-align:center;"><input <?php echo empty($post['Post']['picture'])?'':'checked="checked"'; ?> type="radio" disabled /></td>
 								<td style="width:2%;text-align:center;"><input id="post_<?=$post['Post']['id']?>" <?php echo $post['Post']['status'] == 0?'':'checked'; ?> type="checkbox" onchange="change_status(<?= $post['Post']['id'] ?>)" /></td>
 							</tr>
 							

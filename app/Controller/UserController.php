@@ -315,7 +315,7 @@ class UserController extends AppController {
 		
 		die();
 	}
-	public function anonymity(){
+	public function anonymity( ){
 		$this->loadModel('User');
 		$this->loadModel('Post_category');
 		$find = $this->User->findById(1);
@@ -333,6 +333,7 @@ class UserController extends AppController {
 		
 				//$this->Session->setFlash('Welcome back ' . $find['User']['username'] . '!' );
 				$this->redirect( array( 'controller' => 'forum' , 'action' => 'index'));
+			
 		
 	}
 	

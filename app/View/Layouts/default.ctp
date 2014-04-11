@@ -21,7 +21,7 @@ $cakeDescription = __d('cake_dev', 'have fun and get all you want here.');
 
 $title = __d( 'title' , 'nonsense 游戏讨论和交易中心' );
 
-$site_url = __d( 'SITE', 'bbs_example' );
+$site_url = __d( 'SITE', Configure::read('site_name') );
 
 //define('SITE' , 'bbs_example');
 
@@ -68,13 +68,17 @@ $site_url = __d( 'SITE', 'bbs_example' );
 	<link rel="stylesheet" href="/<?= $site_url ?>/zzz/jQuery-Validation-Engine-master/css/validationEngine.jquery.css" type="text/css"/>
 	
 	<!-- uploadify -->
-	<script src="/<?= Configure::read('site_name') ?>/zzz/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
-	<link rel="stylesheet" type="text/css" href="/<?= Configure::read('site_name') ?>/zzz/uploadify/uploadify.css">
+	<script src="/<?= $site_url ?>/zzz/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="/<?= $site_url ?>/zzz/uploadify/uploadify.css">
 	
 	<!-- CSS for Drop Down Tabs Menu #1 -->
-	<link rel="stylesheet" type="text/css" href="/<?= Configure::read('site_name') ?>/zzz/top_nav_bar/top_nav/ddcolortabs.css" />
-	<script type="text/javascript" src="/<?= Configure::read('site_name') ?>/zzz/top_nav_bar/top_nav/dropdowntabs.js"></script>
-</head>
+	<link rel="stylesheet" type="text/css" href="/<?= $site_url ?>/zzz/top_nav_bar/top_nav/ddcolortabs.css" />
+	<script type="text/javascript" src="/<?= $site_url ?>/zzz/top_nav_bar/top_nav/dropdowntabs.js"></script>
+	
+	<!-- Ckeditor  -->
+	<script src="/<?= $site_url ?>/zzz/ckeditor/ckeditor.js"></script>
+	<script src="/<?= $site_url ?>/zzz/ckeditor/adapters/jquery.js"></script>
+	</head>
 <body>
 	<div id="container">
 		<div id="header">

@@ -13,7 +13,7 @@
 AdminEdit
 <div class="admin_wrapper">
 	<?php
-		var_dump($admin);
+		//var_dump($admin);
 	?>
 		<div class="user_edit_div">
 		Admin Info Edit

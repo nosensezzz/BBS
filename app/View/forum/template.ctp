@@ -2,6 +2,8 @@
 
 <?php 
 	$site_url = Configure::read('site_name');
+	//var_dump($_SERVER);
+	
 ?>
 
 <!--  用户简要信息 与 用户相关操作 -->
@@ -16,7 +18,7 @@
 		?>
 			<script>
 					// 没注册用户的处理
-					window.location.href="/<?= Configure::read('site_name')?>"
+					window.location.href="/<?= Configure::read('site_name')?>/user/anonymity"
 				
 			</script>
 			<div class="central_window">
@@ -80,14 +82,24 @@
 			
 			<div class="siderbar_search">
 			<table>
-			<tr><td><input style="width:100%;"/></td></tr>
-			<tr><td><button style="width:100%;margin-top:5px;">Search</button></td></tr>
+			<form action="/<?=Configure::read('site_name')?>/games/search" method="get"  accept-charset="utf-8" class="form_1">
+			<tr><td><input style="width:100%;" id="search" name="query"/></td></tr>
+			<tr><td><button style="width:100%;margin-top:5px;" onclick="search()" >Search</button></td></tr>
+			</form>
+					<script>
+						function search(){
+							val = $("#search").val();
+							//alert(val);
+							window.location.href="/<?=$site_url?>/games/search?query=" + val ;
+						}
+					</script>
 			</table>
 			</div>
+					
 			<hr/>
 			<div class="siderbar_mid_part">
 			<ul>	
-				<span>Categories</span>
+				<span>讨论区</span>
 				<?php
 					//var_dump($cate);
 					foreach($cate as $category):
@@ -101,18 +113,27 @@
 			</ul>
 			</div>
 			<hr/>
+			<div>
+				
+			</div>
 		</div>
 	</div>
 	
 </div>
 <div class="right_part">
+
+<?php 
+//echo $id;
+if( $id!=1 ):
+?>
 <div class="right_part_top_links">
 
 <div id="colortab" class="ddcolortabs">
 <ul>
 <li><a href="/<?= $site_url?>" title=""><span>Forum</span></a></li>
-<li><a href="#" title=""><span>Shop</span></a></li>
-<li><a href="#" title="" ><span>TBD</span></a></li>
+<li><a href="/store" title=""><span>Our Shop</span></a></li>
+<li><a href="#" title="" rel="dropmenu_b" ><span>Sign Up for a money award game</span></a></li>
+<li><a href="#" title="" rel="dropmenu_c" ><span>Create / Join a team</span></a></li>
 	
 <li><a href="#" title="" rel="dropmenu_a" ><span>Contact Us</span></a></li>	
 </ul>
@@ -121,14 +142,24 @@
 <div class="ddcolortabsline">&nbsp;</div>
 
 
-<!--1st drop down menu -->                                                   
+<!--a drop down menu -->                                                   
 <div id="dropmenu_a" class="dropmenudiv_a">
 <a href="#">nosensezzz</a>
-
 </div>
 
 
-<!--2nd drop down menu -->                                                
+<!--b drop down menu -->   
+<div id="dropmenu_b" class="dropmenudiv_a">
+<?php //use game_index model here ?>
+<a href="#">Dota 2</a>
+<a href="#">League of Legengds</a>
+</div>    
+
+<!--c drop down menu -->   
+<div id="dropmenu_c" class="dropmenudiv_a">
+<a href="/<?=$site_url?>/team/create_team">Create</a>
+<a href="#">Join</a>
+</div>                                            
 
 
 <script type="text/javascript">
@@ -136,16 +167,10 @@
 tabdropdown.init("colortab", 3)
 </script>
 
-<script>
-function select_this_cate( cate ){
-	window.location.href="/<?=$site_url?>/games/coc?category=" + cate ;
-}
 
-
-
-</script>
 
 </div>
+<?php endif;?>
 	
 	
 	
@@ -166,4 +191,12 @@ function back_to_main(){
 function back_to_index(){
 	window.location.href="/bbs_example";
 }
+</script>
+<script>
+function select_this_cate( cate ){
+	window.location.href="/<?=$site_url?>/games/coc?category=" + cate ;
+}
+
+
+
 </script>

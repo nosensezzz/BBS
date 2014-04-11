@@ -8,7 +8,7 @@
 	<div class="inner_wrapper" >
 		<div class="high_light_area">
 			<div class="high_light_area_header">
-				<div id="notice_header" ><div id="notice_header_content">Recent Suggestions</div></div>
+				<div id="notice_header" ><div id="notice_header_content">Popular Teams</div></div>
 				<div id="recentpost_header" ><div id="recentpost_header_content">Most Recent Topic</div></div>
 				<div id="recentreply_header" ><div id="recentreply_header_content">Hot Category</div></div>
 			</div>
@@ -86,11 +86,6 @@
 						
 						<table class="cate_table">
 					
-					
-						<tr id="th">
-							<!--th id="th_id">img</th> <th>Category</th> <th>Topic</th>  <th>Last Post</th> <th>Time</th> <th>View/Reply</th-->
-						<tr>
-					
 					<?php
 						foreach( $category as $cate){
 							$active_posts_count = 0;
@@ -100,7 +95,7 @@
 							
 							<tr onclick="select_this_cate( <?= $cate['Post_category']['id'] ?> )" id="post" style="cursor:pointer;" >
 								<td id="tr_id"><img src="/<?php echo Configure::read( 'site_name' );?>/zzz/picture/<?= $cate['Post_category']['id']?>/cate_logo.jpg"  /></td>
-								<td style="width:70%;padding-left:25px;"><?=$cate['Post_category']['category']?></td>
+								<td style="width:65%;padding-left:25px;"><?=$cate['Post_category']['category']?></td>
 								<?php  if($cate['Post_category']['id'] == 0): ?>
 								<td style="width:5%;text-align:center;"><?php echo ' - '; ?></td>
 								<?php else:?>
@@ -112,7 +107,7 @@
 								?></td>
 								<?php endif; ?>
 								
-								<td><?php  if($cate['Post_category']['id'] == 0):      echo '-'; ?><?php 
+								<td style="width:27%;text-align:center;" ><?php  if($cate['Post_category']['id'] == 0):      echo '-'; ?><?php 
 								else:
 								$i = end( $cate['Post'] );
 								echo 'Last Posted By - ' . date('Y-m-d H:i:s', $i['created_time']); 

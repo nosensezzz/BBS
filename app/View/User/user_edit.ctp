@@ -137,6 +137,7 @@ function avatarChange(){
 				},
 				'swf'      : '/<?= Configure::read('site_name') ?>/zzz/uploadify/uploadify.swf',
 				'uploader' : '/<?= Configure::read('site_name') ?>/user/avatarCheck',
+				'script'   : '/<?= Configure::read('site_name') ?>/zzz/uploadify/uploadify.php',
 				'fileTypeDesc':'File Type: ',
 				'fileTypeExts':'*.jpg;*.jpge;*.gif;*.png',
 				'fileSizeLimit':'3MB',

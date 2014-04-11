@@ -205,6 +205,14 @@
 	                    // speaks by itself
 	                    "alertTextLoad": "* Validating, please wait"
 	                },
+					"ajaxTeamCreatePhp": {
+	                    // remote json service location
+	                    "url": "/" + site + "/team/ajaxTeamNameCheck",
+	                    // error
+	                    "alertText": "* This Name is already taken",
+	                    // speaks by itself
+	                    "alertTextLoad": "* Validating, please wait"
+	                },
 					
 				
                 "validate2fields": {

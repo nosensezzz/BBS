@@ -90,7 +90,7 @@
 				</tr>
 				<tr>
 				<td><font class="en1">Content: </font> </td>
-				<td><textarea name="data[Post][text]" id="text" rows=10 cols=120 class="input1" onblur="this.className='input1 validate[required] minSize[10]'" onfocus="this.className='input1-bor validate[required] minSize[10]'"></textarea>
+				<td><textarea name="data[Post][text]" id="text" rows=10 cols=120 class="input1" onblur="this.className='input1 validate[required] minSize[5]'" onfocus="this.className='input1-bor validate[required] minSize[5]'"></textarea>
 				</td>
 				</tr>
 				<tr>
@@ -118,6 +118,11 @@
 </div>
 
 <script>
+$( document ).ready( function() {
+	$( 'textarea#text' ).ckeditor();
+} );
+</script>
+<script>
 function select_this_post( id ){
 
 	window.location.href="post?id=" + id;
@@ -132,6 +137,7 @@ function cancelReply(){
 	$(".new_post_div").hide();
 }
 </script>
+
 <script>
 // Call ValidationEngine here
 		jQuery(document).ready(function(){
