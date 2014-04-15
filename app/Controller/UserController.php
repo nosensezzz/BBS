@@ -44,7 +44,9 @@ class UserController extends AppController {
 							
 							if($this->User->save(( $this->request->data))){
 								$this->Session->setFlash('You have registered!');
-								$this->redirect( array( 'controller' => 'forum' , 'action' => 'index'));
+								$lastuser = $this->User->findById($this->User->getInsertID());
+								
+								$this->redirect( array( 'controller' => 'User' , 'action' => 'after_login' , '?id='.$this->User->getInsertID() . '&pw=' . $lastuser['User']['password']));
 							}
 					} else {
 							$this->Session->setFlash('Error, This Email has been Used!');
@@ -111,14 +113,22 @@ class UserController extends AppController {
 					'password' => $_GET['pw']
 				)
 			));
-			
-			//var_dump( $find );
+			$this->loadModel('Team_member');
+			/*
+			$team_info = $this->Team_member->find('all' , array(
+				'conditions' => array(
+					'uid' => $_GET['id'],
+				),
+			));
+			*/
+			//var_dump( $find['Team_member'] );
 			//die();
 			if ( $find ){
 			
 			//Session variables
 				$this->Session->write('id', $find['User']['id'] );
 				$this->Session->write('user', $find['User'] );
+				$this->Session->write('team', $find['Team_member'] );
 				$this->loadModel('Post_category');
 				$category = $this->Post_category->find('all');
 				$count = 0;

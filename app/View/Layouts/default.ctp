@@ -78,6 +78,9 @@ $site_url = __d( 'SITE', Configure::read('site_name') );
 	<!-- Ckeditor  -->
 	<script src="/<?= $site_url ?>/zzz/ckeditor/ckeditor.js"></script>
 	<script src="/<?= $site_url ?>/zzz/ckeditor/adapters/jquery.js"></script>
+	<!-- Tab Javascript library -->
+	<script src="/<?= $site_url ?>/zzz/tab_js/jquery.idTabs.min.js"></script>
+	<link href="/<?= $site_url ?>/zzz/cssmenu/menu_source/styles.css" rel="stylesheet" type="text/css">
 	</head>
 <body>
 	<div id="container">

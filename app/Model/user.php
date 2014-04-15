@@ -46,6 +46,10 @@ class User extends AppModel {
 			'foreignKey' => 'by_user',
 		),
 		*/
+		'Team_member' => array(
+			'className' => 'Team_member',
+			'foreignKey' => 'uid',
+		),
 	 );
 	 
 	 

@@ -11,8 +11,9 @@
 		$id = $this->Session->read('id');
 		$user = $this->Session->read('user');
 		$cate = $this->Session->read('cate');
+		$team = $this->Session->read('team');
 
-
+		//var_dump($team);
 		//var_dump($cate);
 		if( !$id ){
 		?>
@@ -53,6 +54,12 @@
 				}else{  
 				?>
 				<li class="top_right"><a href="/<?=$site_url?>/user/user_edit/<?= $id ?>" class="top_link"><span>Edit</span></a></li>
+					<?php
+						//echo count($team);
+						if(count($team) > 0){
+					?>
+				<li class="top_right"><a href="/<?=$site_url?>/Team/edit_team/<?= $id ?>" class="top_link"><span>My Teams</span></a></li>
+					<?php  }  ?>
 				<?php  }  ?>
 				<li class="top_right">
 						<div class="time_panel">

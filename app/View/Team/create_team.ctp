@@ -11,9 +11,7 @@
 
 ?>
 
-
-<div class="wrapper_2">
-<div class="inner_wrapper" >
+ 
 Create a team
 				
 						<form action="/bbs_example/team/create_team_form/<?php echo $uid;?>"  enctype="multipart/form-data"  id="createTeamForm" method="post" accept-charset="utf-8" >
@@ -31,8 +29,11 @@ Create a team
 							<td><font class="en1"><label for="type">Game Type Select</label></font> </td>
 							<td><div>
 								<select name="data[Team][type]" id="type">
-								<option value="1">Dota 2</option>
-								<option value="2">League of Legend</option>
+								<?php
+									foreach( $gameTypes as $game ){
+										echo '<option value="' . $game['Game_types']['id'] . '">' . $game['Game_types']['game'] . '</option>';
+									}
+								?>
 								</select>
 							
 							</div>
@@ -107,7 +108,38 @@ $(function() {
 
 
 });
-	</script>
+</script>
+
+<script>
+function avatarChange(){
+	//$("#picture").addClass('validate[ajax[ajaxAvatarCall]]');
+}
+</script>
+<script>
+// Call ValidationEngine here
+		jQuery(document).ready(function(){
+			// binds form submission and fields to the validation engine
+			jQuery("#createTeamForm").validationEngine();
+			
+						
+			
+		});
+		/**
+		*
+		* @param {jqObject} the field where the validation applies
+		* @param {Array[String]} validation rules for this field
+		* @param {int} rule index
+		* @param {Map} form options
+		* @return an error string if validation failed
+		*/
+		function checkHELLO(field, rules, i, options){
+			if (field.val() != "HELLO") {
+				// this allows to use i18 for the error msgs
+				return options.allrules.validate2fields.alertText;
+			}
+		}
+	
+</script>
 
 <?php 
 	$this->end( 'main' );

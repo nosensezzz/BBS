@@ -468,4 +468,6 @@ overflow:hidden;
 
 .search_result_div{padding:20px; width:70%;}
 .search_single_div{padding:20px;}
-
+.team_view_div{
+	padding:15px;
+}
