@@ -50,6 +50,9 @@ class TeamController extends AppController {
 
 	public function create_team_form( $uid=null ){
 		$this->request->data['Team']['created_time'] = time();
+		$this->request->data['Team']['short'] = trim( $this->request->data['Team']['short'] );
+		$this->request->data['Team']['team_name'] = trim( $this->request->data['Team']['team_name'] );
+		
 		$this->loadModel('Team');
 		$new_folder_path = WWW_ROOT . 'zzz\picture\teamlogo' . DS . $this->request->data['Team']['team_name'] . DS;
 		$dir = new Folder( $new_folder_path , true , 0755 );
@@ -170,12 +173,50 @@ class TeamController extends AppController {
 	
 		
 		$this->set('team' , $teams);
+		$this->set('id' , $uid);
 		//var_dump($user);
 		// var_dump($teaminfo);
 		//die( var_dump($teams) );
 	}
 	
+	public function join_team(){
 	
+		if(empty($_GET['t'])){
+			$gid = 1;
+		}else{
+			$gid = $_GET['t'];
+		}
+		$this->loadModel('Team');
+		$teams = $this->Team->find('all' , array(
+			'conditions' => array(
+				'type' => $gid,
+			),
+			'order' => array( 'team_reward DESC' ),
+		));
+		
+		$this->loadModel('Team_member');
+		$this->loadModel('User');
+		foreach( $teams as $k => $team  ){
+			foreach( $team['Team_member'] as $j => $member ):
+			$user = $this->User->find('first'  , array(
+				'conditions' => array(
+					'id' => $member['uid'],
+				),
+			));
+			$teams[$k]['Team_member'][$j]['User'] = $user['User']; 
+			endforeach;
+		}
+		
+		
+		$this->loadModel('Game_types');
+		$types = $this->Game_types->find('all');
+		$this->set('types' , $types );
+		$this->set('teams' , $teams );
+		$this->set('gid' , $gid );
+	//var_dump($types);
+	var_dump($teams);
+	
+	}
 
 	
 	
@@ -184,36 +225,54 @@ class TeamController extends AppController {
 	
 	
 	public function ajaxTeamNameCheck(){
-	if($this->request->query['fieldId'] == 'teamname'){
-		$callback[0] = $this->request->query['fieldId'];
-		$this->loadModel('Team');
-		$exist = $this->Team->find('first' , array(
-			'conditions' => array(
-				'team_name' => $this->request->query['fieldValue'],
-			),
-		));
-		if(!$exist){
-			$callback[1] = true;
-			}else{ $callback[1] = false; }
-		echo json_encode($callback);
-		die();
-	}
-	if($this->request->query['fieldId'] == 'teamshort'){
-		$callback[0] = $this->request->query['fieldId'];
-		$this->loadModel('Team');
-		$exist = $this->Team->find('first' , array(
-			'conditions' => array(
-				'short' => $this->request->query['fieldValue'],
-			),
-		));
-		if(!$exist){
-			$callback[1] = true;
-			}else{ $callback[1] = false; }
-		echo json_encode($callback);
-		die();
+		if($this->request->query['fieldId'] == 'teamname'){
+			$callback[0] = $this->request->query['fieldId'];
+			$this->loadModel('Team');
+			$exist = $this->Team->find('first' , array(
+				'conditions' => array(
+					'team_name' => $this->request->query['fieldValue'],
+				),
+			));
+			if(!$exist){
+				$callback[1] = true;
+				}else{ $callback[1] = false; }
+			echo json_encode($callback);
+			die();
+		}
+		if($this->request->query['fieldId'] == 'teamshort'){
+			$callback[0] = $this->request->query['fieldId'];
+			$this->loadModel('Team');
+			$exist = $this->Team->find('first' , array(
+				'conditions' => array(
+					'short' => $this->request->query['fieldValue'],
+				),
+			));
+			if(!$exist){
+				$callback[1] = true;
+				}else{ $callback[1] = false; }
+			echo json_encode($callback);
+			die();
+		}
 	}
 	
-	
+	public function delete_team(){
+		//echo $_POST['tid'];
+		$this->loadModel('Team');
+		$this->Team->delete($_POST['tid']);
+		$this->loadModel('Team_member');
+				$this->Team_member->unbindModel(array(
+					'belongsTo' => array('User'),
+				));
+				$team_info = $this->Team_member->find('all' , array(
+				'conditions' => array(
+					'Team_member.uid' => $_POST['uid'],
+				)));
+				foreach( $team_info as $k=>$t ){
+					$team_info[$k] = $t['Team_member'];
+				}
+				$this->Session->write('team', $team_info );
+				echo count($team_info);
+		die();
 	}
 	
 	

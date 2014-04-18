@@ -318,6 +318,10 @@ padding:3px;
 	padding:0px;
 }
 
+.team_view_table{
+	padding:0px;
+}
+
 .post_header_table th{
 	padding:1px; 
 	border:0px;
@@ -470,4 +474,10 @@ overflow:hidden;
 .search_single_div{padding:20px;}
 .team_view_div{
 	padding:15px;
+	margin-bottom: 0px;
+}
+.team_members_table{
+font-size:12px;
+	margin-bottom: 0px;
+	padding-left:20px;
 }

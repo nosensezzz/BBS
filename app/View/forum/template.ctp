@@ -164,8 +164,8 @@ if( $id!=1 ):
 
 <!--c drop down menu -->   
 <div id="dropmenu_c" class="dropmenudiv_a">
-<a href="/<?=$site_url?>/team/create_team">Create</a>
-<a href="#">Join</a>
+<a href="/<?=$site_url?>/Team/create_team">Create</a>
+<a href="/<?=$site_url?>/Team/join_team">Join</a>
 </div>                                            
 
 
