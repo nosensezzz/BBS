@@ -214,8 +214,32 @@ class TeamController extends AppController {
 		$this->set('teams' , $teams );
 		$this->set('gid' , $gid );
 	//var_dump($types);
-	var_dump($teams);
+	//var_dump($teams);
 	
+	}
+	
+
+	public function view_and_join( $tid ){
+		$this->loadModel('Team');
+		$team = $this->Team->findById($tid);
+		$team['userHasTeam'] = false;
+		
+		
+		$user_teams = $this->Session->read('team');
+		foreach($user_teams as $joined_team){
+			if($joined_team['tid'] == $team['Team']['id'] ){
+			// has joined a same type team
+				//die('joined');
+			//	$team['userHasTeam'] = true;
+			}
+		}
+
+		
+		$this->set('team' , $team);
+	//var_dump($team);
+	//var_dump($this->Session->read('team'));
+	
+	//die();
 	}
 
 	

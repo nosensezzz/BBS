@@ -62,7 +62,7 @@
 		</div>
 		<script>
 		$("#team_<?=$team['Team']['id']?>").on('click' , function(e){
-			location.href = "/<?=Configure::read('site_name')?>/Team/view_team/<?=$team['Team']['id']?>"; 
+			location.href = "/<?=Configure::read('site_name')?>/Team/view_and_join/<?=$team['Team']['id']?>"; 
 		});
 		
 		</script>
